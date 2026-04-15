@@ -1,6 +1,11 @@
-// STL asset manifest — 3D model files are hosted as GitHub Releases assets,
-// NOT committed to this repo. After creating the repo and a release tagged
-// `v1.0-assets` with the 6 STL files uploaded, update RELEASE_BASE below.
+// STL asset manifest — 3D model files are hosted on the dedicated `assets`
+// branch of this repository (see branch README) and served via
+// raw.githubusercontent.com, which sets `Access-Control-Allow-Origin: *`
+// so that browser STLLoader fetches work cross-origin.
+//
+// Why not the GitHub Releases asset URL? Release downloads redirect to
+// release-assets.githubusercontent.com (Azure blob) which does NOT return
+// CORS headers, blocking browser XHR.
 //
 // Each entry matches the schema consumed by the Three.js viewer:
 //   url, name, materialKey (resolved in scene.js to a THREE.Material),
@@ -9,7 +14,7 @@
 // Referenced materials: matCase, matESP, matBattery, matSensorMLX,
 // matSensorMAX, matBand. These are defined in src/features/viewer/scene.js.
 
-const RELEASE_BASE = 'https://github.com/<USERNAME>/<REPO>/releases/download/v1.0-assets/';
+const RELEASE_BASE = 'https://raw.githubusercontent.com/gozdehavinfidan/DiaSage-web/assets/';
 
 export const stlParts = [
   { url: RELEASE_BASE + 'case_body.stl', name: 'Kasa', materialKey: 'matCase',

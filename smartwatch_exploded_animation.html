@@ -412,9 +412,11 @@
     var loadedCount = 0;
     var totalFiles = 6;
 
-    // STL assets hosted on GitHub Releases. After creating the release
-    // tagged `v1.0-assets` with 6 STL files uploaded, replace <USERNAME>/<REPO>.
-    var RELEASE_BASE = 'https://github.com/<USERNAME>/<REPO>/releases/download/v1.0-assets/';
+    // STL assets are served from the dedicated `assets` branch via
+    // raw.githubusercontent.com (permissive CORS). The GitHub Releases URL
+    // was abandoned because release-assets.githubusercontent.com does not
+    // return CORS headers, blocking browser XHR / STLLoader fetches.
+    var RELEASE_BASE = 'https://raw.githubusercontent.com/gozdehavinfidan/DiaSage-web/assets/';
 
     var stlFiles = [
         { path: RELEASE_BASE + 'case_body.stl', name: 'Kasa (Case Body)', material: matCase,
