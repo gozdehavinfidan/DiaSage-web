@@ -2,20 +2,20 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8" />
-    <title>DiaAgent Smartwatch - Interactive Showcase</title>
+    <title>DiaSAGE Smartwatch - Interactive Showcase</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles/exploded.css" />
 </head>
 <body>
     <div id="loading">
-        <div style="font-size:24px; font-weight:300; letter-spacing:4px; text-transform:uppercase;">DiaAgent</div>
+        <div style="font-size:24px; font-weight:300; letter-spacing:4px; text-transform:uppercase;">DiaSAGE</div>
         <div style="font-size:11px; font-weight:300; letter-spacing:6px; color:rgba(255,255,255,0.3); margin-top:6px;">SMARTWATCH</div>
         <div style="font-size:9px; font-weight:300; letter-spacing:2px; color:rgba(255,255,255,0.15); margin-top:16px;">IKCU AI Lab | Wearable Health Monitor</div>
         <div id="loading-bar"><div id="loading-fill"></div></div>
         <div id="loading-text">Yukleniyor...</div>
     </div>
-    <div id="info">DiaAgent Smartwatch</div>
+    <div id="info">DiaSAGE Smartwatch</div>
     <div id="label-container"></div>
     <div id="progress-bar"><div id="progress-fill"></div></div>
     <div id="debug"></div>
@@ -147,7 +147,7 @@
         </button>
         <div class="diagram-container">
             <div class="diagram-header">
-                <h1>DiaAgent Smartwatch</h1>
+                <h1>DiaSAGE Smartwatch</h1>
                 <p>Elektronik Komponent Montaj Diyagrami</p>
                 <div class="diagram-badge">Montaj Sirasi</div>
             </div>
@@ -252,7 +252,7 @@
             </div>
 
             <div class="diagram-footer">
-                <p>IKCU Yapay Zeka Laboratuvari &mdash; DiaAgent Giyilebilir Saglik Monitoru</p>
+                <p>IKCU Yapay Zeka Laboratuvari &mdash; DiaSAGE Giyilebilir Saglik Monitoru</p>
                 <p>TUBITAK 2242 Universite Ogrencileri Arastirma Proje Yarismasi &middot; 2026</p>
             </div>
         </div>
@@ -631,7 +631,7 @@
         wfCurrentSlide = -1;
         setWfSlide(0);
         document.getElementById('progress-fill').style.width = '0%';
-        document.getElementById('info').textContent = 'DiaAgent Smartwatch';
+        document.getElementById('info').textContent = 'DiaSAGE Smartwatch';
 
         document.querySelectorAll('.mode-btn').forEach(function(b){ b.classList.remove('active'); });
         document.getElementById('mode-' + mode).classList.add('active');
@@ -782,7 +782,7 @@
         wfCurrentSlide = -1;
         setWfSlide(0);
         document.getElementById('progress-fill').style.width = '0%';
-        document.getElementById('info').textContent = 'DiaAgent Smartwatch';
+        document.getElementById('info').textContent = 'DiaSAGE Smartwatch';
     };
 
     window.toggleAutoRotate = function() { autoRotate = !autoRotate; };
@@ -845,11 +845,11 @@
             var s = easeBack(Math.min(p.t,1));
             watchGroup.scale.set(s,s,s);
             for(var i=0;i<n;i++){if(components[i]){components[i].mesh.position.copy(components[i].assembled.pos);components[i].mesh.rotation.copy(components[i].assembled.rot);}}
-            info.textContent='DiaAgent Smartwatch';
+            info.textContent='DiaSAGE Smartwatch';
         }
         else if (p.phase==='hold1') {
             watchGroup.scale.set(1,1,1);
-            info.textContent='DiaAgent Smartwatch';
+            info.textContent='DiaSAGE Smartwatch';
         }
         else if (p.phase==='explode') {
             watchGroup.scale.set(1,1,1);
@@ -911,7 +911,7 @@
         }
         else if (p.phase==='hold2') {
             for(var i=0;i<n;i++){if(components[i]){components[i].mesh.position.copy(components[i].assembled.pos);components[i].mesh.rotation.copy(components[i].assembled.rot);}}
-            info.textContent='DiaAgent Smartwatch';
+            info.textContent='DiaSAGE Smartwatch';
         }
         else if (p.phase==='done') {
             modeState.phase='idle';
@@ -1073,7 +1073,7 @@
         // Hide ground and shadows in turntable
         ground.visible = false;
         renderer.shadowMap.enabled = false;
-        document.getElementById('info').textContent = 'DiaAgent Smartwatch \u2014 360\u00b0';
+        document.getElementById('info').textContent = 'DiaSAGE Smartwatch \u2014 360\u00b0';
     }
 
     // ==================== X-RAY ANIMATION ====================
@@ -1269,7 +1269,7 @@
             modeState.phase = 'idle';
             card.classList.remove('visible');
             resetMaterials();
-            info.textContent = 'DiaAgent Smartwatch';
+            info.textContent = 'DiaSAGE Smartwatch';
         }
     }
 
@@ -1395,7 +1395,7 @@
 
         // Info bar shows current slide label
         var label = wfSlideLabels[wfCurrentSlide] || 'Logo';
-        document.getElementById('info').textContent = 'DiaAgent \u2014 ' + label;
+        document.getElementById('info').textContent = 'DiaSAGE \u2014 ' + label;
     }
 
     // ==================== WIREFRAME ANIMATION ====================
@@ -1479,13 +1479,13 @@
     }
 
     var cinematicInfoTexts = [
-        { t: 0, text: 'DiaAgent Smartwatch' },
+        { t: 0, text: 'DiaSAGE Smartwatch' },
         { t: 3, text: 'IKCU AI Lab Tasarimi' },
         { t: 6, text: '1.69" Dokunmatik Ekran' },
         { t: 9, text: 'Dahili Saglik Sensorleri' },
         { t: 12, text: 'Kablosuz Veri Aktarimi' },
         { t: 15, text: 'Giyilebilir Saglik Teknolojisi' },
-        { t: 18, text: 'DiaAgent Smartwatch' }
+        { t: 18, text: 'DiaSAGE Smartwatch' }
     ];
 
     function animateCinematic(elapsed) {
@@ -1501,7 +1501,7 @@
         camR = cam.dist;
 
         // Info text
-        var infoText = 'DiaAgent Smartwatch';
+        var infoText = 'DiaSAGE Smartwatch';
         for (var i = cinematicInfoTexts.length - 1; i >= 0; i--) {
             if (t >= cinematicInfoTexts[i].t) { infoText = cinematicInfoTexts[i].text; break; }
         }
@@ -1512,7 +1512,7 @@
 
         if (t >= cinematicTotalDur) {
             modeState.phase = 'idle';
-            document.getElementById('info').textContent = 'DiaAgent Smartwatch';
+            document.getElementById('info').textContent = 'DiaSAGE Smartwatch';
         }
     }
 
