@@ -24,43 +24,43 @@
     <div id="sidebar">
         <div class="mode-btn active" onclick="switchMode('exploded')" id="mode-exploded">
             <div class="mode-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-            <div class="mode-label"><div class="mode-name">Patlatilmis Goruntum</div><div class="mode-desc">Komponentler ayrisir</div></div>
+            <div class="mode-label"><div class="mode-name">Patlatılmış Görünüm</div><div class="mode-desc">Bileşenler havada ayrılır</div></div>
         </div>
         <div class="mode-btn" onclick="switchMode('electronics')" id="mode-electronics">
             <div class="mode-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><circle cx="12" cy="12" r="2"/></svg></div>
-            <div class="mode-label"><div class="mode-name">Elektronik Patlatma</div><div class="mode-desc">Kordon haric ic komponentler</div></div>
+            <div class="mode-label"><div class="mode-name">Elektronik Bileşenler</div><div class="mode-desc">Kordon hariç iç bileşenler</div></div>
         </div>
         <div class="mode-btn" onclick="switchMode('turntable')" id="mode-turntable">
             <div class="mode-icon"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-6.22-8.56"/><path d="M21 3v5h-5"/></svg></div>
-            <div class="mode-label"><div class="mode-name">360 Turntable</div><div class="mode-desc">Doner platform gorunumu</div></div>
+            <div class="mode-label"><div class="mode-name">360° Döner Sahne</div><div class="mode-desc">Sürekli dönen platform</div></div>
         </div>
         <div class="mode-btn" onclick="switchMode('xray')" id="mode-xray">
             <div class="mode-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div>
-            <div class="mode-label"><div class="mode-name">Rontgen Gorunum</div><div class="mode-desc">Seffaf kasa, ic yapi</div></div>
+            <div class="mode-label"><div class="mode-name">Röntgen Görünüm</div><div class="mode-desc">Şeffaf kasa ve iç yapı</div></div>
         </div>
         <div class="mode-btn" onclick="switchMode('xray-electronics')" id="mode-xray-electronics">
             <div class="mode-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><circle cx="12" cy="12" r="1.5"/></svg></div>
-            <div class="mode-label"><div class="mode-name">Elektronik Rontgen</div><div class="mode-desc">Kordon haric seffaf gorunum</div></div>
+            <div class="mode-label"><div class="mode-name">Elektronik Röntgen</div><div class="mode-desc">Kordon hariç şeffaf iç</div></div>
         </div>
         <div class="mode-btn" onclick="switchMode('layered')" id="mode-layered">
             <div class="mode-icon"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="4" rx="1"/><rect x="4" y="10" width="16" height="4" rx="1"/><rect x="4" y="18" width="16" height="4" rx="1"/></svg></div>
-            <div class="mode-label"><div class="mode-name">Katman Montaj</div><div class="mode-desc">Sirayla birlesen parcalar</div></div>
+            <div class="mode-label"><div class="mode-name">Katmanlı Montaj</div><div class="mode-desc">Sırayla birleşen parçalar</div></div>
         </div>
         <div class="mode-btn" onclick="switchMode('focus')" id="mode-focus">
             <div class="mode-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><circle cx="11" cy="11" r="3"/></svg></div>
-            <div class="mode-label"><div class="mode-name">Komponent Turu</div><div class="mode-desc">Detayli yakin cekim</div></div>
+            <div class="mode-label"><div class="mode-name">Bileşen Turu</div><div class="mode-desc">Detaylı yakın çekim</div></div>
         </div>
         <div class="mode-btn" onclick="switchMode('wireframe')" id="mode-wireframe">
             <div class="mode-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 19h20L12 2z"/><line x1="12" y1="2" x2="12" y2="19"/><line x1="2" y1="19" x2="17" y2="7"/><line x1="22" y1="19" x2="7" y2="7"/></svg></div>
-            <div class="mode-label"><div class="mode-name">Tel Kafes</div><div class="mode-desc">Teknik wireframe gorunum</div></div>
+            <div class="mode-label"><div class="mode-name">Tel Kafes</div><div class="mode-desc">Teknik tel kafes görünümü</div></div>
         </div>
         <div class="mode-btn" onclick="switchMode('watchface')" id="mode-watchface">
             <div class="mode-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="12" x2="14.5" y2="13.5"/></svg></div>
-            <div class="mode-label"><div class="mode-name">Saat Yuzu</div><div class="mode-desc">LCD ekran ve saglik verisi</div></div>
+            <div class="mode-label"><div class="mode-name">Saat Yüzü</div><div class="mode-desc">LCD ekran ve sağlık verisi</div></div>
         </div>
         <div class="mode-btn" onclick="switchMode('cinematic')" id="mode-cinematic">
             <div class="mode-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="8" x2="22" y2="8"/><line x1="2" y1="16" x2="22" y2="16"/><line x1="6" y1="4" x2="6" y2="8"/><line x1="18" y1="4" x2="18" y2="8"/><line x1="6" y1="16" x2="6" y2="20"/><line x1="18" y1="16" x2="18" y2="20"/></svg></div>
-            <div class="mode-label"><div class="mode-name">Sinematik Tur</div><div class="mode-desc">Dramatik kamera hareketi</div></div>
+            <div class="mode-label"><div class="mode-name">Sinematik Gezinti</div><div class="mode-desc">Dramatik kamera hareketi</div></div>
         </div>
     </div>
 
