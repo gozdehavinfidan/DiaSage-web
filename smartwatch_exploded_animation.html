@@ -54,10 +54,6 @@
             <div class="mode-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 19h20L12 2z"/><line x1="12" y1="2" x2="12" y2="19"/><line x1="2" y1="19" x2="17" y2="7"/><line x1="22" y1="19" x2="7" y2="7"/></svg></div>
             <div class="mode-label"><div class="mode-name">Tel Kafes</div><div class="mode-desc">Teknik wireframe gorunum</div></div>
         </div>
-        <div class="mode-btn" onclick="switchMode('heartbeat')" id="mode-heartbeat">
-            <div class="mode-icon"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
-            <div class="mode-label"><div class="mode-name">Nabiz Monitoru</div><div class="mode-desc">Canli saglik verisi efekti</div></div>
-        </div>
         <div class="mode-btn" onclick="switchMode('watchface')" id="mode-watchface">
             <div class="mode-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="12" x2="14.5" y2="13.5"/></svg></div>
             <div class="mode-label"><div class="mode-name">Saat Yuzu</div><div class="mode-desc">LCD ekran ve saglik verisi</div></div>
@@ -65,10 +61,6 @@
         <div class="mode-btn" onclick="switchMode('cinematic')" id="mode-cinematic">
             <div class="mode-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="8" x2="22" y2="8"/><line x1="2" y1="16" x2="22" y2="16"/><line x1="6" y1="4" x2="6" y2="8"/><line x1="18" y1="4" x2="18" y2="8"/><line x1="6" y1="16" x2="6" y2="20"/><line x1="18" y1="16" x2="18" y2="20"/></svg></div>
             <div class="mode-label"><div class="mode-name">Sinematik Tur</div><div class="mode-desc">Dramatik kamera hareketi</div></div>
-        </div>
-        <div class="mode-btn" onclick="switchMode('diagram')" id="mode-diagram">
-            <div class="mode-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>
-            <div class="mode-label"><div class="mode-name">Montaj Diyagrami</div><div class="mode-desc">Komponent montaj sirasi</div></div>
         </div>
     </div>
 
@@ -139,124 +131,6 @@
 
     <!-- Lab Badge -->
     <div id="lab-badge">IKCU AI Lab | Wearable Health Monitor</div>
-
-    <!-- Montaj Diyagrami Overlay -->
-    <div id="diagram-overlay">
-        <button class="diagram-close" onclick="switchMode('exploded')" title="Kapat">
-            <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-        <div class="diagram-container">
-            <div class="diagram-header">
-                <h1>DiaSAGE Smartwatch</h1>
-                <p>Elektronik Komponent Montaj Diyagrami</p>
-                <div class="diagram-badge">Montaj Sirasi</div>
-            </div>
-
-            <div class="diagram-timeline">
-                <!-- ADIM 1: Kasa -->
-                <div class="diagram-step">
-                    <div class="step-number">
-                        <div class="step-circle">1</div>
-                        <div class="step-label">Adim 1</div>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-card-content">
-                            <div class="comp-visual case-body">
-                                <div class="comp-shape"></div>
-                            </div>
-                            <div class="comp-info-block">
-                                <h3>Kasa (Case Body)</h3>
-                                <p class="comp-subtitle">3D Baski PLA/Resin Govde</p>
-                                <p class="comp-specs">40.9 &times; 57.7 &times; 18.3 mm</p>
-                                <div class="comp-dot blue"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ADIM 2: Sensorler -->
-                <div class="diagram-step">
-                    <div class="step-number">
-                        <div class="step-circle">2</div>
-                        <div class="step-label">Adim 2</div>
-                    </div>
-                    <div class="step-card">
-                        <div class="dual-components">
-                            <div class="dual-comp-item">
-                                <div class="comp-visual sensor-mlx">
-                                    <div class="comp-shape"></div>
-                                </div>
-                                <div class="comp-info-block">
-                                    <h3>MLX90614 Sicaklik Sensoru</h3>
-                                    <p class="comp-subtitle">Kizilotesi Temassiz Sicaklik</p>
-                                    <p class="comp-specs">13 &times; 17 &times; 7.5 mm &middot; I2C &middot; &plusmn;0.5&deg;C</p>
-                                    <div class="comp-dot blue"></div>
-                                </div>
-                            </div>
-                            <div class="dual-comp-item">
-                                <div class="comp-visual sensor-max">
-                                    <div class="comp-shape"></div>
-                                </div>
-                                <div class="comp-info-block">
-                                    <h3>MAX30100 Nabiz/SpO2</h3>
-                                    <p class="comp-subtitle">PPG Nabiz ve Kan Oksijen</p>
-                                    <p class="comp-specs">14 &times; 18 &times; 4.5 mm &middot; I2C &middot; PPG</p>
-                                    <div class="comp-dot green"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ADIM 3: Batarya -->
-                <div class="diagram-step">
-                    <div class="step-number">
-                        <div class="step-circle">3</div>
-                        <div class="step-label">Adim 3</div>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-card-content">
-                            <div class="comp-visual battery">
-                                <div class="comp-shape"></div>
-                            </div>
-                            <div class="comp-info-block">
-                                <h3>Li-ion Batarya</h3>
-                                <p class="comp-subtitle">Sarj Edilebilir Lityum Pil</p>
-                                <p class="comp-specs">24.4 &times; 6.1 &times; 35.8 mm &middot; 3.7V 500mAh</p>
-                                <div class="comp-dot gray"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ADIM 4: ESP32 -->
-                <div class="diagram-step">
-                    <div class="step-number">
-                        <div class="step-circle">4</div>
-                        <div class="step-label">Adim 4</div>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-card-content">
-                            <div class="comp-visual esp32">
-                                <div class="comp-shape"></div>
-                            </div>
-                            <div class="comp-info-block">
-                                <h3>ESP32-S3 LCD Modul</h3>
-                                <p class="comp-subtitle">1.69" Kapasitif Dokunmatik Ekran</p>
-                                <p class="comp-specs">33.1 &times; 41.1 &times; 10.7 mm &middot; 240&times;280 px &middot; WiFi/BLE</p>
-                                <div class="comp-dot blue"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="diagram-footer">
-                <p>IKCU Yapay Zeka Laboratuvari &mdash; DiaSAGE Giyilebilir Saglik Monitoru</p>
-                <p>TUBITAK 2242 Universite Ogrencileri Arastirma Proje Yarismasi &middot; 2026</p>
-            </div>
-        </div>
-    </div>
 
     <div id="controls">
         <button class="btn" onclick="playCurrentMode()">Oynat</button>
@@ -392,7 +266,7 @@
             }
             dbg('Logo texture yuklendi');
         };
-        img.src = 'resmi logo.png';
+        img.src = 'assets/images/resmi logo.png';
     })();
 
     // ==================== COMPONENT INFO ====================
@@ -618,11 +492,6 @@
 
     // ==================== MODE SWITCH ====================
     window.switchMode = function(mode) {
-        // Hide diagram overlay when switching to any mode
-        var diagramOverlay = document.getElementById('diagram-overlay');
-        diagramOverlay.classList.remove('visible');
-        renderer.domElement.style.display = '';
-
         modeState.phase = 'idle';
         modeState.data = {};
         resetMaterials();
@@ -643,12 +512,7 @@
         modeState.startTime = clock.getElapsedTime();
         modeState.phase = 'playing';
 
-        if (mode === 'diagram') {
-            diagramOverlay.classList.add('visible');
-            renderer.domElement.style.display = 'none';
-            modeState.phase = 'idle';
-        }
-        else if (mode === 'exploded') {
+        if (mode === 'exploded') {
             watchGroup.scale.set(0.01, 0.01, 0.01);
             for (var i=0;i<components.length;i++) {
                 if(!components[i]) continue;
@@ -689,9 +553,6 @@
         else if (mode === 'wireframe') {
             for (var i = 0; i < allMats.length; i++) { allMats[i].wireframe = true; allMats[i].needsUpdate = true; }
             matEdge.opacity = 0.6; matEdge.needsUpdate = true;
-        }
-        else if (mode === 'heartbeat') {
-            modeState.data.baseRotY = rotY;
         }
         else if (mode === 'cinematic') {
             modeState.data.baseRotY = rotY;
@@ -760,11 +621,6 @@
             modeState.phase = 'playing';
             setAssembled();
             for (var i = 0; i < allMats.length; i++) { allMats[i].wireframe = true; allMats[i].needsUpdate = true; }
-        }
-        else if (activeMode === 'heartbeat') {
-            modeState.phase = 'playing';
-            modeState.data.baseRotY = rotY;
-            setAssembled();
         }
         else if (activeMode === 'cinematic') {
             modeState.phase = 'playing';
@@ -1413,40 +1269,6 @@
         document.getElementById('info').textContent = 'Tel Kafes Gorunum';
     }
 
-    // ==================== HEARTBEAT ANIMATION ====================
-    function animateHeartbeat(elapsed) {
-        var t = elapsed - modeState.startTime;
-        setAssembled();
-        syncBands();
-        // Slow rotation
-        rotY = (modeState.data.baseRotY || 0) + t * 0.15;
-        rotX = 0.2 + Math.sin(t * 0.3) * 0.05;
-
-        // Heartbeat double-pulse: lub...dub...rest
-        var cycle = t % 0.9;
-        var pulse = 1.0;
-        if (cycle < 0.1) pulse = 1 + 0.025 * Math.sin(cycle / 0.1 * Math.PI);
-        else if (cycle > 0.2 && cycle < 0.3) pulse = 1 + 0.018 * Math.sin((cycle - 0.2) / 0.1 * Math.PI);
-        watchGroup.scale.set(pulse, pulse, pulse);
-
-        // Screen glow with heartbeat - red for heartbeat
-        var screenGlow = 0;
-        if (cycle < 0.12) screenGlow = Math.sin(cycle / 0.12 * Math.PI);
-        else if (cycle > 0.2 && cycle < 0.32) screenGlow = 0.6 * Math.sin((cycle - 0.2) / 0.12 * Math.PI);
-        matScreen.emissive.setRGB(0.4 * screenGlow, 0.05 * screenGlow, 0.05 * screenGlow);
-        matScreen.emissiveIntensity = 1;
-        matScreen.needsUpdate = true;
-
-        // Sensors pulse with a subtle glow
-        var sensorPulse = 0.3 + 0.3 * Math.sin(t * 3);
-        matSensorMAX.emissive.setRGB(0.05 * sensorPulse, 0.2 * sensorPulse, 0.05 * sensorPulse);
-        matSensorMLX.emissive.setRGB(0.05 * sensorPulse, 0.05 * sensorPulse, 0.2 * sensorPulse);
-        matSensorMAX.needsUpdate = true;
-        matSensorMLX.needsUpdate = true;
-
-        document.getElementById('info').textContent = 'Nabiz Monitoru \u2014 Canli Veri';
-    }
-
     // ==================== CINEMATIC ANIMATION ====================
     var cinematicKeys = [
         { t: 0,  ry: 0,    rx: 0.3,  dist: 320 },
@@ -1518,11 +1340,6 @@
         }
     }
 
-    // ==================== DIAGRAM MODE ====================
-    function animateDiagram(elapsed) {
-        // Diagram is a static HTML overlay, no 3D animation needed
-    }
-
     // ==================== MOUSE ====================
     var isDrag=false, prevM={x:0,y:0}, rotY=-0.3, rotX=0.25, camR=250;
     renderer.domElement.addEventListener('mousedown',function(e){isDrag=true;prevM={x:e.clientX,y:e.clientY};});
@@ -1546,7 +1363,7 @@
         var elapsed = clock.getElapsedTime();
 
         // Auto-rotate (not in modes that control their own camera)
-        var selfCamModes = ['turntable','wireframe','heartbeat','cinematic','watchface','diagram'];
+        var selfCamModes = ['turntable','wireframe','cinematic','watchface'];
         var isSelfCam = selfCamModes.indexOf(activeMode) >= 0 || (activeMode === 'focus' && modeState.phase === 'playing');
         if (autoRotate && !isDrag && !isSelfCam) {
             rotY += 0.003;
@@ -1570,9 +1387,7 @@
                 case 'focus': animateFocus(elapsed); break;
                 case 'watchface': animateWatchFace(elapsed); break;
                 case 'wireframe': animateWireframe(elapsed); break;
-                case 'heartbeat': animateHeartbeat(elapsed); break;
                 case 'cinematic': animateCinematic(elapsed); break;
-                case 'diagram': animateDiagram(elapsed); break;
             }
         }
 
