@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DiaSage - Akıllı Sağlık Takip Ekosistemi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles/main.css" />
+</head>
+<body>
+
+<!-- ==================== NAVBAR ==================== -->
+<nav id="navbar">
+    <div class="container">
+        <a href="#hero" class="nav-logo">Dia<span>Sage</span></a>
+        <ul class="nav-links">
+            <li><a href="#features">Özellikler</a></li>
+            <li><a href="#watch">Akıllı Saat</a></li>
+            <li><a href="#ring">Akıllı Yüzük</a></li>
+            <li><a href="#app">Uygulama</a></li>
+            <li><a href="#doctors">Doktor Paneli</a></li>
+            <li>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Tema değiştir">
+                    <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                </button>
+            </li>
+            <li><a href="javascript:void(0)" class="nav-cta" id="loginBtn">Giriş Yap</a></li>
+        </ul>
+        <button class="nav-hamburger" onclick="toggleMobileNav()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" onclick="toggleMobileNav()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <a href="#features" onclick="toggleMobileNav()">Özellikler</a>
+    <a href="#watch" onclick="toggleMobileNav()">Akıllı Saat</a>
+    <a href="#ring" onclick="toggleMobileNav()">Akıllı Yüzük</a>
+    <a href="#app" onclick="toggleMobileNav()">Uygulama</a>
+    <a href="#doctors" onclick="toggleMobileNav()">Doktor Paneli</a>
+    <a href="#" onclick="toggleMobileNav(); openQRModal(); return false;" style="color:var(--purple);font-weight:600;">Giriş Yap</a>
+</div>
+
+<!-- ==================== HERO ==================== -->
+<section id="hero">
+    <div class="hero-bg">
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-orb hero-orb-3"></div>
+        <div class="hero-grid-bg"></div>
+    </div>
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge reveal">
+                    <div class="hero-badge-dot"></div>
+                    DiaSage | Giyilebilir Sağlık Teknolojisi
+                </div>
+                <h1 class="hero-title reveal reveal-delay-1">
+                    Sağlığınızı<br><span class="gradient-text">Gerçek Zamanlı</span><br>Takip Edin
+                </h1>
+                <p class="hero-subtitle reveal reveal-delay-2">
+                    DiaSage ekosistemi; akıllı saat, akıllı yüzük ve mobil uygulama ile
+                    nabız, SpO2, sıcaklık ve daha fazlasını anlık olarak izler. Verilerinizi
+                    doktorunuzla güvenle paylaşın.
+                </p>
+                <div class="hero-buttons reveal reveal-delay-3">
+                    <a href="#features" class="btn-primary">
+                        Özellikleri Keşfedin
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                    <a href="smartwatch_exploded_animation.html" class="btn-secondary">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        3D Modeli İncele
+                    </a>
+                </div>
+                <div class="hero-stats reveal reveal-delay-4">
+                    <div>
+                        <div class="hero-stat-value gradient-text">9+</div>
+                        <div class="hero-stat-label">Sağlık Metriği</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-value gradient-text">BLE</div>
+                        <div class="hero-stat-label">Kablosuz Bağlantı</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-value gradient-text">7/24</div>
+                        <div class="hero-stat-label">Sürekli Takip</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== FEATURES ==================== -->
+<section id="features">
+    <div class="container">
+        <div class="features-header">
+            <div class="section-tag reveal">Sağlık Metrikleri</div>
+            <h2 class="section-title reveal reveal-delay-1">Gerçek Zamanlı<br><span class="gradient-text">Sağlık Takibi</span></h2>
+            <p class="section-desc reveal reveal-delay-2">
+                Akıllı saat ve akıllı yüzükten toplanan verilerin birleşimiyle toplamda 9 farklı sağlık parametresini
+                sürekli olarak izleyin.
+            </p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card reveal" style="--card-accent: var(--heart);">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="var(--heart)"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+                <div class="feature-name">Nabız</div>
+                <div class="feature-desc">MAX30100 PPG sensörü ile sürekli kalp atışı takibi</div>
+                <div class="feature-value" style="color: var(--heart);">78 <span style="font-size:18px;color:var(--text-dim);">BPM</span></div>
+            </div>
+            <div class="feature-card reveal reveal-delay-1" style="--card-accent: var(--spo2);">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="var(--spo2)"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg></div>
+                <div class="feature-name">SpO2</div>
+                <div class="feature-desc">Kan oksijen doygunluğu ölçümü ile hipoksi uyarısı</div>
+                <div class="feature-value" style="color: var(--spo2);">97<span style="font-size:18px;color:var(--text-dim);">%</span></div>
+            </div>
+            <div class="feature-card reveal reveal-delay-2" style="--card-accent: var(--temp);">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="var(--temp)"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg></div>
+                <div class="feature-name">Sıcaklık</div>
+                <div class="feature-desc">MLX90614 temassız kızılötesi vücut sıcaklığı sensörü</div>
+                <div class="feature-value" style="color: var(--temp);">36.5<span style="font-size:18px;color:var(--text-dim);">&deg;C</span></div>
+            </div>
+            <div class="feature-card reveal reveal-delay-3" style="--card-accent: var(--bp);">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="var(--bp)"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                <div class="feature-name">Tansiyon</div>
+                <div class="feature-desc">Sistolik ve diastolik kan basıncı takibi</div>
+                <div class="feature-value" style="color: var(--bp);">118/76<span style="font-size:18px;color:var(--text-dim);"> mmHg</span></div>
+            </div>
+            <div class="feature-card reveal reveal-delay-4" style="--card-accent: var(--steps);">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="var(--steps)"><circle cx="12" cy="5" r="2"/><path d="M7 21l3-7 2 2 2-2 3 7"/><path d="M10 14l-2-2 4-4"/></svg></div>
+                <div class="feature-name">Adım Sayısı</div>
+                <div class="feature-desc">IMU ivme sensörü ile günlük aktivite takibi</div>
+                <div class="feature-value" style="color: var(--steps);">8,432<span style="font-size:18px;color:var(--text-dim);"> adım</span></div>
+            </div>
+            <div class="feature-card reveal reveal-delay-5" style="--card-accent: var(--calories);">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="var(--calories)"><path d="M12 12c-3 0-4-3-4-6s4-6 4-6 4 3 4 6-1 6-4 6z"/><path d="M12 12c2 3 4 5 4 7a4 4 0 01-8 0c0-2 2-4 4-7z"/></svg></div>
+                <div class="feature-name">Kalori</div>
+                <div class="feature-desc">Harcanan kalori hesabı ile diyet yönetimi desteği</div>
+                <div class="feature-value" style="color: var(--calories);">245<span style="font-size:18px;color:var(--text-dim);"> kcal</span></div>
+            </div>
+            <div class="feature-card reveal reveal-delay-6" style="--card-accent: var(--hrv);">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="var(--hrv)"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
+                <div class="feature-name">HRV</div>
+                <div class="feature-desc">Kalp hızı değişkenliği ile stres ve otonom sinir analizi</div>
+                <div class="feature-value" style="color: var(--hrv);">68<span style="font-size:18px;color:var(--text-dim);"> ms</span></div>
+            </div>
+            <div class="feature-card reveal reveal-delay-7" style="--card-accent: var(--sleep);">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="var(--sleep)"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></div>
+                <div class="feature-name">Uyku</div>
+                <div class="feature-desc">Uyku süresi ve kalitesi analizi ile düzene yardımcı</div>
+                <div class="feature-value" style="color: var(--sleep);">7.5<span style="font-size:18px;color:var(--text-dim);"> saat</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SMART WATCH ==================== -->
+<section id="watch">
+    <div class="container">
+        <div class="watch-content">
+            <div class="watch-visual reveal">
+                <div class="watch-3d-wrapper">
+                    <div class="watch-3d-glow"></div>
+                    <canvas id="watch-3d-canvas"></canvas>
+                </div>
+            </div>
+            <div>
+                <div class="section-tag reveal">Akıllı Saat</div>
+                <h2 class="section-title reveal reveal-delay-1">DiaSage<br><span class="gradient-text">Akıllı Saat</span></h2>
+                <p class="section-desc reveal reveal-delay-2">
+                    Özel olarak tasarlanan, 3D baskı kasaya sahip akıllı saat. ESP32-S3
+                    işlemci, 1.69" dokunmatik LCD, MAX30100 nabız/SpO2 ve MLX90614 sıcaklık sensörleri
+                    ile donatılmış profesyonel sağlık takip cihazı.
+                </p>
+                <div class="watch-specs reveal reveal-delay-3">
+                    <div class="watch-spec">
+                        <div class="watch-spec-label">İşlemci</div>
+                        <div class="watch-spec-value">ESP32-S3</div>
+                    </div>
+                    <div class="watch-spec">
+                        <div class="watch-spec-label">Ekran</div>
+                        <div class="watch-spec-value">1.69" LCD 240x280</div>
+                    </div>
+                    <div class="watch-spec">
+                        <div class="watch-spec-label">Batarya</div>
+                        <div class="watch-spec-value">500mAh Li-ion</div>
+                    </div>
+                    <div class="watch-spec">
+                        <div class="watch-spec-label">Bağlantı</div>
+                        <div class="watch-spec-value">BLE 5.0 + WiFi</div>
+                    </div>
+                </div>
+                <div class="btn-3d-wrap reveal reveal-delay-4">
+                    <a href="smartwatch_exploded_animation.html" class="btn-3d">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        3D İnteraktif Görüntüle
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== SMART RING ==================== -->
+<section id="ring">
+    <div class="container">
+        <div class="ring-content">
+            <div>
+                <div class="section-tag reveal">Akıllı Yüzük</div>
+                <h2 class="section-title reveal reveal-delay-1">Kompakt Sağlık<br><span class="gradient-text">Takip Yüzüğü</span></h2>
+                <p class="section-desc reveal reveal-delay-2">
+                    DiaSage ekosisteminin ikinci giyilebilir cihazı. Parmağınızdan sürekli sağlık
+                    verisi toplayarak kesintisiz izleme sunar.
+                    BLE bağlantısı ile mobil uygulamaya otomatik senkronize olur.
+                </p>
+                <div class="ring-features">
+                    <div class="ring-feature reveal reveal-delay-3">
+                        <div class="ring-feature-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                        </div>
+                        <div>
+                            <div class="ring-feature-title">7/24 Sürekli İzleme</div>
+                            <div class="ring-feature-desc">Gece ve gündüz kesintisiz nabız, SpO2 ve sıcaklık takibi</div>
+                        </div>
+                    </div>
+                    <div class="ring-feature reveal reveal-delay-4">
+                        <div class="ring-feature-icon">
+                            <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+                        </div>
+                        <div>
+                            <div class="ring-feature-title">BLE 5.0 Bağlantı</div>
+                            <div class="ring-feature-desc">Düşük enerji tüketimli Bluetooth ile uzun pil ömrü ve stabil veri aktarımı</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ring-visual reveal">
+                <div class="ring-img-wrapper">
+                    <div class="ring-glow"></div>
+                    <img src="assets/images/ring.png" alt="DiaSage Akıllı Yüzük" class="ring-img">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== MOBILE APP ==================== -->
+<section id="app">
+    <div class="app-bg-glow"></div>
+    <div class="container">
+        <div class="app-header">
+            <div class="section-tag reveal">Mobil Uygulama</div>
+            <h2 class="section-title reveal reveal-delay-1">DiaSage<br><span class="gradient-text">Mobil Uygulama</span></h2>
+            <p class="section-desc reveal reveal-delay-2">
+                Akıllı saat ve yüzükten toplanan tüm sağlık verileri tek bir uygulamada.
+                İlaç hatırlatıcıları, sağlık raporları ve doktor paylaşımı.
+            </p>
+        </div>
+        <div class="app-carousel-wrap reveal">
+        <div class="app-stage" id="appStage">
+            <div class="phone-mockup" data-label="Giriş Ekranı" data-desc="Firebase Authentication ile güvenli giriş. E-posta ve şifre ile kullanıcı hesabınıza erişin.">
+                <div class="phone-inner"><img src="assets/images/app-screenshots/Screenshot_20260222_232857.png" alt="Giriş Ekranı"></div>
+                <div class="phone-glow"></div>
+            </div>
+            <div class="phone-mockup" data-label="BLE Eşleştirme" data-desc="Akıllı saat ve akıllı yüzük ile Bluetooth Low Energy üzerinden eşleştirme. Her iki cihaz da desteklenmektedir.">
+                <div class="phone-inner"><img src="assets/images/app-screenshots/Screenshot_20260223_125025.png" alt="BLE Eşleştirme"></div>
+                <div class="phone-glow"></div>
+            </div>
+            <div class="phone-mockup" data-label="Cihaz Listesi" data-desc="Çevredeki BLE cihazları otomatik taranır. Akıllı saat veya yüzüğünüzü listeden seçerek bağlanın.">
+                <div class="phone-inner"><img src="assets/images/app-screenshots/Picture1.png" alt="Cihaz Listesi"></div>
+                <div class="phone-glow"></div>
+            </div>
+            <div class="phone-mockup active" data-label="Sağlık Paneli" data-desc="Nabız, SpO2, sıcaklık, tansiyon ve kan şekeri verileriniz tek ekranda. Gerçek zamanlı sağlık takibi.">
+                <div class="phone-inner"><img src="assets/images/app-screenshots/Picture2.png" alt="Sağlık Paneli"></div>
+                <div class="phone-glow"></div>
+            </div>
+            <div class="phone-mockup" data-label="Hatırlatıcılar" data-desc="İlaç hatırlatıcılarınızı takvim üzerinden yönetin. Günlük bildirimlerle dozlarınızı asla kaçırmayın.">
+                <div class="phone-inner"><img src="assets/images/app-screenshots/Screenshot_20260222_233237.png" alt="Hatırlatıcılar"></div>
+                <div class="phone-glow"></div>
+            </div>
+            <div class="phone-mockup" data-label="İlaç Ekleme" data-desc="İlaç adı, doz miktarı, kullanım zamanı ve tekrar günlerini kolayca ayarlayın. Bildirim desteği ile hatırlatma.">
+                <div class="phone-inner"><img src="assets/images/app-screenshots/Screenshot_20260222_233306.png" alt="İlaç Ekleme"></div>
+                <div class="phone-glow"></div>
+            </div>
+            <div class="phone-mockup" data-label="Profil" data-desc="Kişisel bilgilerinizi ve uygulama ayarlarınızı yönetin. Sağlık verilerinizi doktorunuzla paylaşın.">
+                <div class="phone-inner"><img src="assets/images/app-screenshots/Screenshot_20260222_233211.png" alt="Profil"></div>
+                <div class="phone-glow"></div>
+            </div>
+        </div>
+        </div>
+        <div class="app-dots reveal" id="appDots"></div>
+        <div class="app-slide-info reveal" id="appSlideInfo">
+            <div class="app-slide-info-inner" id="appSlideInfoInner">
+                <div class="app-slide-info-title" id="appSlideTitle">Sağlık Paneli</div>
+                <div class="app-slide-info-desc" id="appSlideDesc">Nabız, SpO2, sıcaklık, tansiyon ve kan şekeri verileriniz tek ekranda. Gerçek zamanlı sağlık takibi.</div>
+            </div>
+        </div>
+        <div class="app-features-row">
+            <div class="app-feat reveal">
+                <div class="app-feat-icon">
+                    <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+                </div>
+                <div class="app-feat-title">BLE Cihaz Eşleştirme</div>
+                <div class="app-feat-desc">Akıllı saat ve yüzüğü tek tıkla bağlayın. Otomatik senkronizasyon ile verileriniz anında telefonunuzda.</div>
+            </div>
+            <div class="app-feat reveal reveal-delay-1">
+                <div class="app-feat-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="app-feat-title">İlaç Hatırlatıcıları</div>
+                <div class="app-feat-desc">İlaç dozları, kullanım zamanları ve tekrar günlerini ayarlayın. Bildirimlerle asla dozunuzu kaçırmayın.</div>
+            </div>
+            <div class="app-feat reveal reveal-delay-2">
+                <div class="app-feat-icon">
+                    <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+                </div>
+                <div class="app-feat-title">Doktor Paylaşımı</div>
+                <div class="app-feat-desc">Sağlık verilerinizi doktorunuzla güvenle paylaşın. Firebase üzerinden şifrelenmiş veri aktarımı.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== DOCTOR PANEL ==================== -->
+<section id="doctors">
+    <div class="container">
+        <div class="doctor-content">
+            <div>
+                <div class="section-tag reveal">Doktor Paneli</div>
+                <h2 class="section-title reveal reveal-delay-1">Hastalarınızı<br><span class="gradient-text">Uzaktan Takip Edin</span></h2>
+                <p class="section-desc reveal reveal-delay-2">
+                    Web tabanlı doktor paneli ile hastalarınızın nabız, SpO2, sıcaklık, tansiyon
+                    ve diğer sağlık verilerini gerçek zamanlı izleyin. Anormal değerlerde otomatik
+                    uyarı alın, trend analizi yapın.
+                </p>
+                <div class="doctor-features reveal reveal-delay-3">
+                    <div class="doctor-feat">
+                        <div class="doctor-feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        Gerçek zamanlı hasta sağlık verileri
+                    </div>
+                    <div class="doctor-feat">
+                        <div class="doctor-feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        Grafik ve trend analizi paneli
+                    </div>
+                    <div class="doctor-feat">
+                        <div class="doctor-feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        Anormal değer uyarı sistemi
+                    </div>
+                    <div class="doctor-feat">
+                        <div class="doctor-feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        İlaç hatırlatıcı yönetimi
+                    </div>
+                    <div class="doctor-feat">
+                        <div class="doctor-feat-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        Firebase güvenli veri aktarımı
+                    </div>
+                </div>
+            </div>
+            <div class="doctor-preview reveal reveal-delay-2">
+                <div class="doctor-preview-badge">Doktor Paneli Önizleme</div>
+                <div class="doctor-mock-cards">
+                    <div class="doctor-mock-card">
+                        <div class="dmc-avatar">AY</div>
+                        <div class="dmc-info">
+                            <div class="dmc-name">Ayse Yilmaz</div>
+                            <div class="dmc-sub">TC: ***4521 &middot; Son sync: 3 dk önce</div>
+                        </div>
+                        <div class="dmc-metrics">
+                            <div class="dmc-metric"><div class="dmc-dot" style="background:var(--heart);"></div><span style="color:var(--heart);">78</span></div>
+                            <div class="dmc-metric"><div class="dmc-dot" style="background:var(--spo2);"></div><span style="color:var(--spo2);">97%</span></div>
+                            <div class="dmc-metric"><div class="dmc-dot" style="background:var(--temp);"></div><span style="color:var(--temp);">36.4</span></div>
+                        </div>
+                    </div>
+                    <div class="doctor-mock-card">
+                        <div class="dmc-avatar">MK</div>
+                        <div class="dmc-info">
+                            <div class="dmc-name">Mehmet Kaya</div>
+                            <div class="dmc-sub">TC: ***8912 &middot; Son sync: 12 dk önce</div>
+                        </div>
+                        <div class="dmc-metrics">
+                            <div class="dmc-metric"><div class="dmc-dot" style="background:var(--heart);"></div><span style="color:var(--heart);">92</span></div>
+                            <div class="dmc-metric"><div class="dmc-dot" style="background:var(--spo2);"></div><span style="color:var(--spo2);">95%</span></div>
+                            <div class="dmc-metric"><div class="dmc-dot" style="background:var(--temp);"></div><span style="color:var(--calories);">37.8</span></div>
+                        </div>
+                    </div>
+                    <div class="doctor-mock-card">
+                        <div class="dmc-avatar">FD</div>
+                        <div class="dmc-info">
+                            <div class="dmc-name">Fatma Demir</div>
+                            <div class="dmc-sub">TC: ***3301 &middot; Son sync: 1 saat önce</div>
+                        </div>
+                        <div class="dmc-metrics">
+                            <div class="dmc-metric"><div class="dmc-dot" style="background:var(--heart);"></div><span style="color:var(--heart);">68</span></div>
+                            <div class="dmc-metric"><div class="dmc-dot" style="background:var(--spo2);"></div><span style="color:var(--spo2);">99%</span></div>
+                            <div class="dmc-metric"><div class="dmc-dot" style="background:var(--temp);"></div><span style="color:var(--temp);">36.6</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== ECOSYSTEM ==================== -->
+<section id="ecosystem">
+    <div class="container">
+        <div class="section-tag reveal" style="justify-content:center;">Ekosistem</div>
+        <h2 class="section-title reveal reveal-delay-1">Tamamen Entegre<br><span class="gradient-text">Sağlık Ekosistemi</span></h2>
+        <p class="section-desc reveal reveal-delay-2" style="margin:0 auto;">
+            Akıllı saat, akıllı yüzük, mobil uygulama ve doktor paneli; hepsi birbirine bağlı,
+            hepsi sizin sağlığınız için.
+        </p>
+        <div class="eco-visual">
+            <div class="eco-device eco-watch reveal">
+                <div class="eco-device-icon">
+                    <svg viewBox="0 0 24 24" stroke="currentColor"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="12" x2="14" y2="13"/></svg>
+                </div>
+                <div class="eco-device-name">Akıllı Saat</div>
+                <div class="eco-device-desc">Sağlık sensörü hub'i</div>
+            </div>
+            <div class="eco-connector reveal reveal-delay-1"></div>
+            <div class="eco-device eco-ring reveal reveal-delay-2">
+                <div class="eco-device-icon">
+                    <svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+                </div>
+                <div class="eco-device-name">Akıllı Yüzük</div>
+                <div class="eco-device-desc">Kompakt sağlık takibi</div>
+            </div>
+            <div class="eco-connector reveal reveal-delay-3"></div>
+            <div class="eco-device eco-app reveal reveal-delay-4">
+                <div class="eco-device-icon">
+                    <svg viewBox="0 0 24 24" stroke="currentColor"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+                </div>
+                <div class="eco-device-name">Mobil Uygulama</div>
+                <div class="eco-device-desc">Veri merkezi ve analiz</div>
+            </div>
+            <div class="eco-connector reveal reveal-delay-5"></div>
+            <div class="eco-device eco-doctor reveal reveal-delay-6">
+                <div class="eco-device-icon">
+                    <svg viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <div class="eco-device-name">Doktor Paneli</div>
+                <div class="eco-device-desc">Uzaktan hasta takibi</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== QR LOGIN MODAL ==================== -->
+<div id="qr-login-modal">
+    <button class="qr-close" onclick="closeQRModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <!-- Step 1: Doctor Login/Register Form -->
+    <div class="qr-modal-content" id="qrLoginContent">
+        <div class="qr-modal-logo">Dia<span>Sage</span></div>
+        <div class="qr-modal-title" id="qrAuthTitle">Doktor Girişi</div>
+        <div class="qr-login-form">
+            <div class="form-group" id="qrNameGroup" style="display:none;">
+                <label for="qrDoctorName">Ad Soyad</label>
+                <input type="text" id="qrDoctorName" placeholder="Dr. Ahmet Yılmaz" autocomplete="name">
+            </div>
+            <div class="form-group">
+                <label for="qrDoctorEmail">E-posta</label>
+                <input type="email" id="qrDoctorEmail" placeholder="doktor@email.com" autocomplete="email">
+            </div>
+            <div class="form-group">
+                <label for="qrDoctorPassword">Şifre</label>
+                <input type="password" id="qrDoctorPassword" placeholder="Şifreniz" autocomplete="current-password">
+            </div>
+            <button class="qr-login-btn" id="qrAuthBtn" onclick="handleDoctorAuth()">Giriş Yap</button>
+            <div class="qr-login-error" id="qrAuthError"></div>
+            <div class="qr-login-toggle">
+                <span id="qrToggleText">Hesabınız yok mu?</span>
+                <a id="qrToggleLink" onclick="toggleDoctorAuthMode()">Kayıt Ol</a>
+            </div>
+        </div>
+    </div>
+    <!-- Step 2: QR Code Display -->
+    <div class="qr-modal-content" id="qrContent" style="display:none;">
+        <div class="qr-modal-logo">Dia<span>Sage</span></div>
+        <div class="qr-modal-title">Hastanızı güvenle eşleştirmek için QR kodu okutun</div>
+        <div class="qr-code-box">
+            <div id="qrCanvas"></div>
+        </div>
+        <div class="qr-spinner" id="qrSpinner">
+            <div class="qr-spinner-dot"></div>
+            <div class="qr-spinner-dot"></div>
+            <div class="qr-spinner-dot"></div>
+            <span>Hastanın taramasını bekliyoruz...</span>
+        </div>
+        <div class="qr-timer" id="qrTimer"></div>
+        <div class="qr-steps">
+            <div class="qr-step">
+                <div class="qr-step-num">1</div>
+                <span>Hasta DiaSage uygulamasını açsın</span>
+            </div>
+            <div class="qr-step">
+                <div class="qr-step-num">2</div>
+                <span>QR tarayıcıya gitsin</span>
+            </div>
+            <div class="qr-step">
+                <div class="qr-step-num">3</div>
+                <span>Bu kodu okutun</span>
+            </div>
+        </div>
+    </div>
+    <div class="qr-success" id="qrSuccess">
+        <div class="qr-success-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="qr-success-text">Bağlantı Başarılı!</div>
+        <div class="qr-success-sub">Hasta monitörüne yönlendiriliyorsunuz...</div>
+    </div>
+</div>
+
+<!-- ==================== PATIENT ANALYTICS DASHBOARD ==================== -->
+<div id="patient-monitor">
+    <div class="monitor-header">
+        <div class="monitor-patient">
+            <div>
+                <div class="monitor-patient-name" id="monitorPatientName">Hasta</div>
+                <div class="monitor-patient-id" id="monitorPatientId"></div>
+            </div>
+        </div>
+        <div class="time-range-selector" id="timeRangeSelector">
+            <button class="time-range-btn" data-range="7">Son 7 Gün</button>
+            <button class="time-range-btn active" data-range="30">Son 30 Gün</button>
+            <button class="time-range-btn" data-range="90">Son 3 Ay</button>
+        </div>
+        <div class="monitor-header-right">
+            <span id="monitorLastUpdated" style="font-size:15px;opacity:0.6;white-space:nowrap;color:rgba(255,255,255,0.7);"></span>
+            <button class="monitor-exit" onclick="closeMonitor()">Çıkış</button>
+        </div>
+    </div>
+
+    <!-- Summary strip -->
+    <div class="monitor-summary" id="monitorSummary"></div>
+
+    <!-- Analytics cards -->
+    <div class="monitor-grid" id="monitorGrid">
+        <!-- Heart Rate -->
+        <div class="monitor-card heart-card" data-metric="hr">
+            <div class="monitor-card-glow"></div>
+            <div class="monitor-card-top">
+                <div><div class="monitor-card-label">Nabız</div><div class="monitor-card-unit">BPM &middot; Kalp Atış Hızı</div></div>
+                <div class="monitor-card-top-right"><span class="monitor-card-normal-badge" id="badgeHR">--</span></div>
+            </div>
+            <div class="monitor-card-body">
+                <div class="monitor-card-chart-area">
+                    <canvas class="monitor-chart-canvas" id="chartHR"></canvas>
+                    <div class="minmax-row">
+                        <span class="minmax-label">Min</span><span class="minmax-val" id="minHR" style="color:var(--heart);">--</span>
+                        <div class="minmax-bar-wrap"><div class="minmax-bar-fill" id="barHR"></div><div class="minmax-bar-marker" id="markerHR"></div></div>
+                        <span class="minmax-label">Max</span><span class="minmax-val" id="maxHR" style="color:var(--heart);">--</span>
+                    </div>
+                </div>
+                <div class="monitor-card-analytics" id="analyticsHR"></div>
+            </div>
+        </div>
+        <!-- SpO2 -->
+        <div class="monitor-card spo2-card" data-metric="spo2">
+            <div class="monitor-card-glow"></div>
+            <div class="monitor-card-top">
+                <div><div class="monitor-card-label">SpO2</div><div class="monitor-card-unit">% &middot; Kan Oksijen Satürasyonu</div></div>
+                <div class="monitor-card-top-right"><span class="monitor-card-normal-badge" id="badgeSpO2">--</span></div>
+            </div>
+            <div class="monitor-card-body">
+                <div class="monitor-card-chart-area">
+                    <canvas class="monitor-chart-canvas" id="chartSpO2"></canvas>
+                    <div class="minmax-row">
+                        <span class="minmax-label">Min</span><span class="minmax-val" id="minSpO2" style="color:var(--spo2);">--</span>
+                        <div class="minmax-bar-wrap"><div class="minmax-bar-fill" id="barSpO2"></div><div class="minmax-bar-marker" id="markerSpO2"></div></div>
+                        <span class="minmax-label">Max</span><span class="minmax-val" id="maxSpO2" style="color:var(--spo2);">--</span>
+                    </div>
+                </div>
+                <div class="monitor-card-analytics" id="analyticsSpO2"></div>
+            </div>
+        </div>
+        <!-- Temperature -->
+        <div class="monitor-card temp-card" data-metric="temp">
+            <div class="monitor-card-glow"></div>
+            <div class="monitor-card-top">
+                <div><div class="monitor-card-label">Sıcaklık</div><div class="monitor-card-unit">&deg;C &middot; Vücut Sıcaklığı</div></div>
+                <div class="monitor-card-top-right"><span class="monitor-card-normal-badge" id="badgeTemp">--</span></div>
+            </div>
+            <div class="monitor-card-body">
+                <div class="monitor-card-chart-area">
+                    <canvas class="monitor-chart-canvas" id="chartTemp"></canvas>
+                    <div class="minmax-row">
+                        <span class="minmax-label">Min</span><span class="minmax-val" id="minTemp" style="color:var(--temp);">--</span>
+                        <div class="minmax-bar-wrap"><div class="minmax-bar-fill" id="barTemp"></div><div class="minmax-bar-marker" id="markerTemp"></div></div>
+                        <span class="minmax-label">Max</span><span class="minmax-val" id="maxTemp" style="color:var(--temp);">--</span>
+                    </div>
+                </div>
+                <div class="monitor-card-analytics" id="analyticsTemp"></div>
+            </div>
+        </div>
+        <!-- Blood Pressure -->
+        <div class="monitor-card bp-card" data-metric="bp">
+            <div class="monitor-card-glow"></div>
+            <div class="monitor-card-top">
+                <div><div class="monitor-card-label">Tansiyon</div><div class="monitor-card-unit">mmHg &middot; Sistolik / Diastolik</div></div>
+                <div class="monitor-card-top-right"><span class="monitor-card-normal-badge" id="badgeBP">--</span></div>
+            </div>
+            <div class="monitor-card-body">
+                <div class="monitor-card-chart-area">
+                    <canvas class="monitor-chart-canvas" id="chartBP"></canvas>
+                    <div class="minmax-row">
+                        <span class="minmax-label">Min</span><span class="minmax-val" id="minBP" style="color:var(--bp);">--</span>
+                        <div class="minmax-bar-wrap"><div class="minmax-bar-fill" id="barBP"></div><div class="minmax-bar-marker" id="markerBP"></div></div>
+                        <span class="minmax-label">Max</span><span class="minmax-val" id="maxBP" style="color:var(--bp);">--</span>
+                    </div>
+                </div>
+                <div class="monitor-card-analytics" id="analyticsBP"></div>
+            </div>
+        </div>
+        <!-- HRV -->
+        <div class="monitor-card hrv-card" data-metric="hrv">
+            <div class="monitor-card-glow"></div>
+            <div class="monitor-card-top">
+                <div><div class="monitor-card-label">HRV</div><div class="monitor-card-unit">ms &middot; Kalp Hızı Değişkenliği</div></div>
+                <div class="monitor-card-top-right"><span class="monitor-card-normal-badge" id="badgeHRV">--</span></div>
+            </div>
+            <div class="monitor-card-body">
+                <div class="monitor-card-chart-area">
+                    <canvas class="monitor-chart-canvas" id="chartHRV"></canvas>
+                    <div class="minmax-row">
+                        <span class="minmax-label">Min</span><span class="minmax-val" id="minHRV" style="color:var(--hrv);">--</span>
+                        <div class="minmax-bar-wrap"><div class="minmax-bar-fill" id="barHRV"></div><div class="minmax-bar-marker" id="markerHRV"></div></div>
+                        <span class="minmax-label">Max</span><span class="minmax-val" id="maxHRV" style="color:var(--hrv);">--</span>
+                    </div>
+                </div>
+                <div class="monitor-card-analytics" id="analyticsHRV"></div>
+            </div>
+        </div>
+        <!-- Blood Sugar -->
+        <div class="monitor-card glucose-card" data-metric="glucose">
+            <div class="monitor-card-glow"></div>
+            <div class="monitor-card-top">
+                <div><div class="monitor-card-label">Kan Şekeri</div><div class="monitor-card-unit">mg/dL &middot; Glukoz Seviyesi</div></div>
+                <div class="monitor-card-top-right"><span class="monitor-card-normal-badge" id="badgeGlucose">--</span></div>
+            </div>
+            <div class="monitor-card-body">
+                <div class="monitor-card-chart-area">
+                    <canvas class="monitor-chart-canvas" id="chartGlucose"></canvas>
+                    <div class="minmax-row">
+                        <span class="minmax-label">Min</span><span class="minmax-val" id="minGlucose" style="color:var(--calories);">--</span>
+                        <div class="minmax-bar-wrap"><div class="minmax-bar-fill" id="barGlucose"></div><div class="minmax-bar-marker" id="markerGlucose"></div></div>
+                        <span class="minmax-label">Max</span><span class="minmax-val" id="maxGlucose" style="color:var(--calories);">--</span>
+                    </div>
+                </div>
+                <div class="monitor-card-analytics" id="analyticsGlucose"></div>
+            </div>
+        </div>
+    </div>
+    <div class="monitor-footer">
+        <span id="monitorTime">Seçili dönem: Son 30 gün</span>
+        <span>DiaSage Analiz Paneli v1.0</span>
+    </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<!-- ==================== Supporters ==================== -->
+<section class="supporters" id="supporters">
+    <div class="container">
+        <h2 class="supporters-title reveal">Destekçilerim</h2>
+        <div class="supporters-grid">
+            <div class="supporter-item reveal">
+                <img src="assets/images/resmi logo.png" alt="IKCU AI Lab">
+            </div>
+            <div class="supporter-item reveal reveal-delay-1">
+                <img src="assets/images/vestel_logo.png" alt="Vestel">
+            </div>
+            <div class="supporter-item reveal reveal-delay-2">
+                <img src="assets/images/jcring_logo_light.png" alt="JCRing" class="jcring-light">
+                <img src="assets/images/jcring_logo_dark.png" alt="JCRing" class="jcring-dark">
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">Dia<span>Sage</span></div>
+                <div class="footer-lab">DiaSage &middot; Wearable Health Monitor</div>
+            </div>
+            <div class="footer-links">
+                <a href="#features">Özellikler</a>
+                <a href="#watch">Akıllı Saat</a>
+                <a href="#ring">Akıllı Yüzük</a>
+                <a href="#app">Uygulama</a>
+                <a href="#doctors">Doktor Paneli</a>
+            </div>
+            <div class="footer-copy">&copy; 2025 DiaSage. Tüm hakları saklıdır.</div>
+        </div>
+    </div>
+</footer>
+
+<!-- ==================== Firebase SDK for QR Linking ==================== -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<!-- ==================== THREE.JS for Hero 3D Watch ==================== -->
+<script src="./assets/vendor/three.min.js"></script>
+<script src="./assets/vendor/STLLoader.js"></script>
+
+<!-- ==================== APP ENTRY (ES Module) ==================== -->
+<script type="module" src="./src/app.js"></script>
+
+</body>
+</html>

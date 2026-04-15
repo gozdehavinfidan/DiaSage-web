@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <title>DiaAgent Smartwatch - Interactive Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles/exploded.css" />
+</head>
+<body>
+    <div id="loading">
+        <div style="font-size:24px; font-weight:300; letter-spacing:4px; text-transform:uppercase;">DiaAgent</div>
+        <div style="font-size:11px; font-weight:300; letter-spacing:6px; color:rgba(255,255,255,0.3); margin-top:6px;">SMARTWATCH</div>
+        <div style="font-size:9px; font-weight:300; letter-spacing:2px; color:rgba(255,255,255,0.15); margin-top:16px;">IKCU AI Lab | Wearable Health Monitor</div>
+        <div id="loading-bar"><div id="loading-fill"></div></div>
+        <div id="loading-text">Yukleniyor...</div>
+    </div>
+    <div id="info">DiaAgent Smartwatch</div>
+    <div id="label-container"></div>
+    <div id="progress-bar"><div id="progress-fill"></div></div>
+    <div id="debug"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="mode-btn active" onclick="switchMode('exploded')" id="mode-exploded">
+            <div class="mode-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+            <div class="mode-label"><div class="mode-name">Patlatilmis Goruntum</div><div class="mode-desc">Komponentler ayrisir</div></div>
+        </div>
+        <div class="mode-btn" onclick="switchMode('electronics')" id="mode-electronics">
+            <div class="mode-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><circle cx="12" cy="12" r="2"/></svg></div>
+            <div class="mode-label"><div class="mode-name">Elektronik Patlatma</div><div class="mode-desc">Kordon haric ic komponentler</div></div>
+        </div>
+        <div class="mode-btn" onclick="switchMode('turntable')" id="mode-turntable">
+            <div class="mode-icon"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-6.22-8.56"/><path d="M21 3v5h-5"/></svg></div>
+            <div class="mode-label"><div class="mode-name">360 Turntable</div><div class="mode-desc">Doner platform gorunumu</div></div>
+        </div>
+        <div class="mode-btn" onclick="switchMode('xray')" id="mode-xray">
+            <div class="mode-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div>
+            <div class="mode-label"><div class="mode-name">Rontgen Gorunum</div><div class="mode-desc">Seffaf kasa, ic yapi</div></div>
+        </div>
+        <div class="mode-btn" onclick="switchMode('xray-electronics')" id="mode-xray-electronics">
+            <div class="mode-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><circle cx="12" cy="12" r="1.5"/></svg></div>
+            <div class="mode-label"><div class="mode-name">Elektronik Rontgen</div><div class="mode-desc">Kordon haric seffaf gorunum</div></div>
+        </div>
+        <div class="mode-btn" onclick="switchMode('layered')" id="mode-layered">
+            <div class="mode-icon"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="4" rx="1"/><rect x="4" y="10" width="16" height="4" rx="1"/><rect x="4" y="18" width="16" height="4" rx="1"/></svg></div>
+            <div class="mode-label"><div class="mode-name">Katman Montaj</div><div class="mode-desc">Sirayla birlesen parcalar</div></div>
+        </div>
+        <div class="mode-btn" onclick="switchMode('focus')" id="mode-focus">
+            <div class="mode-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><circle cx="11" cy="11" r="3"/></svg></div>
+            <div class="mode-label"><div class="mode-name">Komponent Turu</div><div class="mode-desc">Detayli yakin cekim</div></div>
+        </div>
+        <div class="mode-btn" onclick="switchMode('wireframe')" id="mode-wireframe">
+            <div class="mode-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 19h20L12 2z"/><line x1="12" y1="2" x2="12" y2="19"/><line x1="2" y1="19" x2="17" y2="7"/><line x1="22" y1="19" x2="7" y2="7"/></svg></div>
+            <div class="mode-label"><div class="mode-name">Tel Kafes</div><div class="mode-desc">Teknik wireframe gorunum</div></div>
+        </div>
+        <div class="mode-btn" onclick="switchMode('heartbeat')" id="mode-heartbeat">
+            <div class="mode-icon"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
+            <div class="mode-label"><div class="mode-name">Nabiz Monitoru</div><div class="mode-desc">Canli saglik verisi efekti</div></div>
+        </div>
+        <div class="mode-btn" onclick="switchMode('watchface')" id="mode-watchface">
+            <div class="mode-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="12" x2="14.5" y2="13.5"/></svg></div>
+            <div class="mode-label"><div class="mode-name">Saat Yuzu</div><div class="mode-desc">LCD ekran ve saglik verisi</div></div>
+        </div>
+        <div class="mode-btn" onclick="switchMode('cinematic')" id="mode-cinematic">
+            <div class="mode-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="8" x2="22" y2="8"/><line x1="2" y1="16" x2="22" y2="16"/><line x1="6" y1="4" x2="6" y2="8"/><line x1="18" y1="4" x2="18" y2="8"/><line x1="6" y1="16" x2="6" y2="20"/><line x1="18" y1="16" x2="18" y2="20"/></svg></div>
+            <div class="mode-label"><div class="mode-name">Sinematik Tur</div><div class="mode-desc">Dramatik kamera hareketi</div></div>
+        </div>
+        <div class="mode-btn" onclick="switchMode('diagram')" id="mode-diagram">
+            <div class="mode-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>
+            <div class="mode-label"><div class="mode-name">Montaj Diyagrami</div><div class="mode-desc">Komponent montaj sirasi</div></div>
+        </div>
+    </div>
+
+    <!-- Component Info Card -->
+    <div id="comp-info">
+        <div id="comp-info-name"></div>
+        <div id="comp-info-desc"></div>
+        <div id="comp-info-specs"></div>
+        <div id="comp-info-counter"></div>
+    </div>
+
+    <!-- Watch Face Overlay -->
+    <div id="watch-face">
+        <div class="wf-slides">
+            <!-- Slide 0: Logo + Clock -->
+            <div class="wf-slide wf-slide-logo active" data-slide="0">
+                <img src="assets/images/resmi logo.png" alt="IKCU AI Lab">
+                <div class="wf-time" id="wf-time">14:28</div>
+                <div class="wf-date" id="wf-date">14 SUBAT 2026</div>
+            </div>
+            <!-- Slide 1: Heart Rate + ECG -->
+            <div class="wf-slide heart" data-slide="1">
+                <div class="wf-slide-icon"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+                <div class="wf-slide-val" id="wf-bpm">74</div>
+                <div class="wf-slide-unit">BPM</div>
+                <svg class="wf-ecg" viewBox="0 0 280 32" preserveAspectRatio="none">
+                    <polyline class="wf-ecg-line" id="wf-ecg-path" points=""/>
+                </svg>
+                <div class="wf-slide-label">Nabız</div>
+            </div>
+            <!-- Slide 2: Blood Pressure -->
+            <div class="wf-slide bp" data-slide="2">
+                <div class="wf-slide-icon"><svg viewBox="0 0 24 24"><path d="M12 2C12 2 4 10 4 14a8 8 0 0016 0c0-4-8-12-8-12z"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg></div>
+                <div class="wf-slide-val" id="wf-bp">120/78</div>
+                <div class="wf-slide-unit">mmHg</div>
+                <div class="wf-slide-sub"><span id="wf-sys">SYS 120</span> &nbsp; <span id="wf-dia">DIA 78</span></div>
+                <div class="wf-slide-label">Tansiyon</div>
+            </div>
+            <!-- Slide 3: Steps -->
+            <div class="wf-slide steps" data-slide="3">
+                <div class="wf-slide-icon"><svg viewBox="0 0 24 24"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 5l-1 5.5 4.1-1-.2 3.5 2.2.1.5-6.5-3.3.7.8-4.3-2.5-2.5L8 8l-3 3 1.5 1.5L8 11l1.9-.5z"/></svg></div>
+                <div class="wf-slide-val" id="wf-steps">4,827</div>
+                <div class="wf-slide-unit">adım</div>
+                <div class="wf-slide-label">Adım Sayısı</div>
+            </div>
+            <!-- Slide 4: Temperature -->
+            <div class="wf-slide temp" data-slide="4">
+                <div class="wf-slide-icon"><svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg></div>
+                <div class="wf-slide-val" id="wf-temp">36.5</div>
+                <div class="wf-slide-unit">&deg;C</div>
+                <div class="wf-slide-label">Vücut Sıcaklığı</div>
+            </div>
+        </div>
+        <div class="wf-dots">
+            <div class="wf-dot active" data-dot="0"></div>
+            <div class="wf-dot" data-dot="1"></div>
+            <div class="wf-dot" data-dot="2"></div>
+            <div class="wf-dot" data-dot="3"></div>
+            <div class="wf-dot" data-dot="4"></div>
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" onclick="toggleTheme()" title="Acik/Koyu Tema">
+        <svg id="theme-icon-sun" viewBox="0 0 24 24" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg id="theme-icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+
+    <!-- Lab Badge -->
+    <div id="lab-badge">IKCU AI Lab | Wearable Health Monitor</div>
+
+    <!-- Montaj Diyagrami Overlay -->
+    <div id="diagram-overlay">
+        <button class="diagram-close" onclick="switchMode('exploded')" title="Kapat">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="diagram-container">
+            <div class="diagram-header">
+                <h1>DiaAgent Smartwatch</h1>
+                <p>Elektronik Komponent Montaj Diyagrami</p>
+                <div class="diagram-badge">Montaj Sirasi</div>
+            </div>
+
+            <div class="diagram-timeline">
+                <!-- ADIM 1: Kasa -->
+                <div class="diagram-step">
+                    <div class="step-number">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Adim 1</div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-card-content">
+                            <div class="comp-visual case-body">
+                                <div class="comp-shape"></div>
+                            </div>
+                            <div class="comp-info-block">
+                                <h3>Kasa (Case Body)</h3>
+                                <p class="comp-subtitle">3D Baski PLA/Resin Govde</p>
+                                <p class="comp-specs">40.9 &times; 57.7 &times; 18.3 mm</p>
+                                <div class="comp-dot blue"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADIM 2: Sensorler -->
+                <div class="diagram-step">
+                    <div class="step-number">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Adim 2</div>
+                    </div>
+                    <div class="step-card">
+                        <div class="dual-components">
+                            <div class="dual-comp-item">
+                                <div class="comp-visual sensor-mlx">
+                                    <div class="comp-shape"></div>
+                                </div>
+                                <div class="comp-info-block">
+                                    <h3>MLX90614 Sicaklik Sensoru</h3>
+                                    <p class="comp-subtitle">Kizilotesi Temassiz Sicaklik</p>
+                                    <p class="comp-specs">13 &times; 17 &times; 7.5 mm &middot; I2C &middot; &plusmn;0.5&deg;C</p>
+                                    <div class="comp-dot blue"></div>
+                                </div>
+                            </div>
+                            <div class="dual-comp-item">
+                                <div class="comp-visual sensor-max">
+                                    <div class="comp-shape"></div>
+                                </div>
+                                <div class="comp-info-block">
+                                    <h3>MAX30100 Nabiz/SpO2</h3>
+                                    <p class="comp-subtitle">PPG Nabiz ve Kan Oksijen</p>
+                                    <p class="comp-specs">14 &times; 18 &times; 4.5 mm &middot; I2C &middot; PPG</p>
+                                    <div class="comp-dot green"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADIM 3: Batarya -->
+                <div class="diagram-step">
+                    <div class="step-number">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Adim 3</div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-card-content">
+                            <div class="comp-visual battery">
+                                <div class="comp-shape"></div>
+                            </div>
+                            <div class="comp-info-block">
+                                <h3>Li-ion Batarya</h3>
+                                <p class="comp-subtitle">Sarj Edilebilir Lityum Pil</p>
+                                <p class="comp-specs">24.4 &times; 6.1 &times; 35.8 mm &middot; 3.7V 500mAh</p>
+                                <div class="comp-dot gray"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADIM 4: ESP32 -->
+                <div class="diagram-step">
+                    <div class="step-number">
+                        <div class="step-circle">4</div>
+                        <div class="step-label">Adim 4</div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-card-content">
+                            <div class="comp-visual esp32">
+                                <div class="comp-shape"></div>
+                            </div>
+                            <div class="comp-info-block">
+                                <h3>ESP32-S3 LCD Modul</h3>
+                                <p class="comp-subtitle">1.69" Kapasitif Dokunmatik Ekran</p>
+                                <p class="comp-specs">33.1 &times; 41.1 &times; 10.7 mm &middot; 240&times;280 px &middot; WiFi/BLE</p>
+                                <div class="comp-dot blue"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="diagram-footer">
+                <p>IKCU Yapay Zeka Laboratuvari &mdash; DiaAgent Giyilebilir Saglik Monitoru</p>
+                <p>TUBITAK 2242 Universite Ogrencileri Arastirma Proje Yarismasi &middot; 2026</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="controls">
+        <button class="btn" onclick="playCurrentMode()">Oynat</button>
+        <button class="btn" onclick="resetCurrentMode()">Sifirla</button>
+        <button class="btn" onclick="toggleAutoRotate()">Dondur</button>
+    </div>
+
+    <script src="./assets/vendor/three.min.js"></script>
+    <script src="./assets/vendor/STLLoader.js"></script>
+    <script>
+    var debugEl = document.getElementById('debug');
+    function dbg(msg) { console.log(msg); debugEl.textContent += msg + '\n'; debugEl.scrollTop = debugEl.scrollHeight; }
+    dbg('Three.js r' + THREE.REVISION + ' | STLLoader: ' + (THREE.STLLoader ? 'OK' : 'YOK'));
+
+    // ==================== SCENE ====================
+    var scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x08080c);
+    var camera = new THREE.PerspectiveCamera(38, innerWidth / innerHeight, 0.1, 50000);
+    camera.position.set(80, 60, 120);
+    var renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.3;
+    document.body.appendChild(renderer.domElement);
+
+    // ==================== ENVIRONMENT MAP ====================
+    var cubeRT = new THREE.WebGLCubeRenderTarget(256);
+    var cubeCamera = new THREE.CubeCamera(1, 1000, cubeRT);
+    (function() {
+        var envScene = new THREE.Scene();
+        var envGeo = new THREE.SphereGeometry(200, 32, 32);
+        var envMat = new THREE.ShaderMaterial({
+            side: THREE.BackSide, uniforms: {},
+            vertexShader: 'varying vec3 vPos; void main(){ vPos=position; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }',
+            fragmentShader: 'varying vec3 vPos; void main(){ float h=normalize(vPos).y*0.5+0.5; vec3 top=vec3(0.4,0.5,0.7); vec3 bot=vec3(0.05,0.05,0.08); vec3 mid=vec3(0.15,0.15,0.2); vec3 c=mix(bot,mid,smoothstep(0.0,0.3,h)); c=mix(c,top,smoothstep(0.3,0.8,h)); gl_FragColor=vec4(c,1.0); }'
+        });
+        envScene.add(new THREE.Mesh(envGeo, envMat));
+        var spotGeo = new THREE.SphereGeometry(8, 8, 8);
+        var spotMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+        var s1 = new THREE.Mesh(spotGeo, spotMat); s1.position.set(80, 120, 60); envScene.add(s1);
+        var s2 = new THREE.Mesh(spotGeo, spotMat); s2.position.set(-60, 80, -40); envScene.add(s2);
+        cubeCamera.position.set(0, 0, 0);
+        cubeCamera.update(renderer, envScene);
+    })();
+    scene.environment = cubeRT.texture;
+
+    // ==================== LIGHTING ====================
+    scene.add(new THREE.AmbientLight(0x556688, 0.7));
+    var keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    keyLight.position.set(60, 100, 80); keyLight.castShadow = true;
+    keyLight.shadow.mapSize.set(2048, 2048); scene.add(keyLight);
+    var fillLight = new THREE.DirectionalLight(0x4488ff, 0.45);
+    fillLight.position.set(-60, 40, -40); scene.add(fillLight);
+    var rimLight = new THREE.DirectionalLight(0xff8855, 0.3);
+    rimLight.position.set(0, -20, -80); scene.add(rimLight);
+    var matEdge = new THREE.LineBasicMaterial({ color: 0x8899aa, transparent: true, opacity: 0.5 });
+
+    // ==================== GROUND ====================
+    var ground = new THREE.Mesh(
+        new THREE.PlaneGeometry(2000, 2000),
+        new THREE.MeshStandardMaterial({ color: 0x0c0c10, roughness: 0.9, metalness: 0.1 })
+    );
+    ground.rotation.x = -Math.PI / 2; ground.position.y = -80;
+    ground.receiveShadow = true; scene.add(ground);
+
+    // ==================== MATERIALS ====================
+    var matCase = new THREE.MeshStandardMaterial({ color: 0x5a9ec8, roughness: 0.3, metalness: 0.4 });
+    var matESP = new THREE.MeshStandardMaterial({ color: 0x0a1a45, roughness: 0.35, metalness: 0.3 });
+    var matScreen = new THREE.MeshStandardMaterial({ color: 0x050505, roughness: 0.05, metalness: 0.15 });
+    var matBattery = new THREE.MeshStandardMaterial({ color: 0x3a4a5a, roughness: 0.35, metalness: 0.55 });
+    var matSensorMLX = new THREE.MeshStandardMaterial({ color: 0x0a1a45, roughness: 0.3, metalness: 0.6 });
+    var matSensorMAX = new THREE.MeshStandardMaterial({ color: 0x1a8a2a, roughness: 0.35, metalness: 0.4 });
+    var matBand = new THREE.MeshStandardMaterial({ color: 0x1a4a8a, roughness: 0.5, metalness: 0.05 });
+    var allMats = [matCase, matESP, matBattery, matSensorMLX, matSensorMAX, matBand, matScreen];
+
+    // ==================== LOGO PLANE FOR SCREEN ====================
+    var logoPlane = null;
+    (function() {
+        var img = new Image();
+        img.onload = function() {
+            // Draw logo on black background canvas with boosted colors
+            var cvs = document.createElement('canvas');
+            cvs.width = 512;
+            cvs.height = 640; // match screen aspect 32:40
+            var ctx = cvs.getContext('2d');
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(0, 0, 512, 640);
+            // Boost for vivid LCD look
+            ctx.filter = 'brightness(1.45) saturate(1.5)';
+            // Center logo preserving aspect ratio
+            var logoAR = img.width / img.height;
+            var drawW = 440, drawH = drawW / logoAR;
+            var dx = (512 - drawW) / 2, dy = (640 - drawH) / 2;
+            ctx.drawImage(img, dx, dy, drawW, drawH);
+            ctx.filter = 'none';
+
+            var tex = new THREE.CanvasTexture(cvs);
+            tex.encoding = THREE.sRGBEncoding;
+
+            // Rounded rect shape matching screen: sw=32, sh=40, sr=5
+            var sw = 32, sh = 40, sr = 5;
+            var logoShape = new THREE.Shape();
+            logoShape.moveTo(-sw/2 + sr, -sh/2);
+            logoShape.lineTo(sw/2 - sr, -sh/2);
+            logoShape.quadraticCurveTo(sw/2, -sh/2, sw/2, -sh/2 + sr);
+            logoShape.lineTo(sw/2, sh/2 - sr);
+            logoShape.quadraticCurveTo(sw/2, sh/2, sw/2 - sr, sh/2);
+            logoShape.lineTo(-sw/2 + sr, sh/2);
+            logoShape.quadraticCurveTo(-sw/2, sh/2, -sw/2, sh/2 - sr);
+            logoShape.lineTo(-sw/2, -sh/2 + sr);
+            logoShape.quadraticCurveTo(-sw/2, -sh/2, -sw/2 + sr, -sh/2);
+            var logoGeo = new THREE.ShapeGeometry(logoShape);
+            // Fix UVs: remap from shape coords to 0-1
+            var uvAttr = logoGeo.attributes.uv;
+            for (var i = 0; i < uvAttr.count; i++) {
+                uvAttr.setX(i, (uvAttr.getX(i) + sw/2) / sw);
+                uvAttr.setY(i, (uvAttr.getY(i) + sh/2) / sh);
+            }
+            uvAttr.needsUpdate = true;
+
+            var logoMat = new THREE.MeshBasicMaterial({
+                map: tex,
+                toneMapped: false
+            });
+            logoPlane = new THREE.Mesh(logoGeo, logoMat);
+            logoPlane.position.set(0, 0, 5.6);
+            logoPlane.visible = false;
+            if (components[1]) {
+                components[1].mesh.add(logoPlane);
+            }
+            dbg('Logo texture yuklendi');
+        };
+        img.src = 'resmi logo.png';
+    })();
+
+    // ==================== COMPONENT INFO ====================
+    var componentInfo = [
+        { name: 'Kasa (Case Body)', desc: 'IKCU AI Lab tarafindan tasarlanan ozel 3D baski kasa. Tum sensör ve elektronik bilesenleri barindiran ergonomik tasarim.', specs: '40.9 x 57.7 x 18.3 mm | PLA/Resin' },
+        { name: 'ESP32-S3 LCD Modul', desc: '1.69" kapasitif dokunmatik LCD ekran. Kalp atisi, SpO2, sicaklik ve adim sayisi verilerini anlik olarak goruntüler. WiFi/BLE ile mobil uygulama baglantisi.', specs: '33.1 x 41.1 x 10.7 mm | 240x280 px' },
+        { name: 'Li-ion Batarya', desc: '3.7V 500mAh sarj edilebilir pil. Surekli sensor okumasi ile ~2 gun pil omru. Type-C hizli sarj destegi.', specs: '24.4 x 6.1 x 35.8 mm | 3.7V 500mAh' },
+        { name: 'MLX90614 Sicaklik Sensoru', desc: 'Temassiz kizilotesi sicaklik sensoru. Bilek damarindan anlik vucut sicakligi olcumu, diyabet takibinde kritik parametre.', specs: '13 x 17 x 7.5 mm | I2C | +/-0.5C' },
+        { name: 'MAX30100 Nabiz/SpO2', desc: 'Fotopletismografi tabanli nabiz ve kan oksijen doygunlugu sensoru. Kalp ritmi analizi ve SpO2 takibi saglar.', specs: '14 x 18 x 4.5 mm | I2C | PPG' },
+        { name: 'Silikon Kordon', desc: 'Medikal sinif hipoalerjenik silikon kordon. Uzun sureli kullanim icin tasarlanmis, su gecirmez.', specs: 'Bilek cevresi: 150-220 mm' }
+    ];
+
+    // ==================== WATCH GROUP ====================
+    var watchGroup = new THREE.Group();
+    scene.add(watchGroup);
+    var components = [];
+    var loadedCount = 0;
+    var totalFiles = 6;
+
+    // STL assets hosted on GitHub Releases. After creating the release
+    // tagged `v1.0-assets` with 6 STL files uploaded, replace <USERNAME>/<REPO>.
+    var RELEASE_BASE = 'https://github.com/<USERNAME>/<REPO>/releases/download/v1.0-assets/';
+
+    var stlFiles = [
+        { path: RELEASE_BASE + 'case_body.stl', name: 'Kasa (Case Body)', material: matCase,
+          assembledPos: [0, 0, 0], assembledRot: [0, 0, 0], explodeDir: [0, 0, 35] },
+        { path: RELEASE_BASE + 'esp_board.stl', name: 'ESP32-S3 LCD Modul', material: matESP,
+          assembledPos: [-1, 0, 4], assembledRot: [0, 0, 0], explodeDir: [50, 18, 15] },
+        { path: RELEASE_BASE + 'battery.stl', name: 'Li-ion Batarya (3.7V 500mAh)', material: matBattery,
+          assembledPos: [0, 8, -4], assembledRot: [-Math.PI/2, -Math.PI/2, 0], explodeDir: [-50, 15, -10] },
+        { path: RELEASE_BASE + 'sensor_mlx.stl', name: 'MLX90614 Sicaklik Sensoru', material: matSensorMLX,
+          assembledPos: [8, -12, -5.4], assembledRot: [Math.PI, 0, 0], explodeDir: [40, -35, -30] },
+        { path: RELEASE_BASE + 'sensor_max30100.stl', name: 'MAX30100 Nabiz/SpO2', material: matSensorMAX,
+          assembledPos: [-7, -12, -5], assembledRot: [Math.PI, 0, 0], explodeDir: [-40, -35, -30] },
+        { path: RELEASE_BASE + 'bands_only_rotated_90degX.stl', name: 'Saat Kordonu', material: matBand,
+          assembledPos: [-1, 1, -31], assembledRot: [0, 0, Math.PI], explodeDir: [-1, 1, -31], scale: [0.85, 1.5, 1] }
+    ];
+
+    var stlLoader = new THREE.STLLoader();
+
+    function fileLoaded(geometry, idx) {
+        geometry.computeBoundingBox();
+        var size = new THREE.Vector3();
+        geometry.boundingBox.getSize(size);
+        geometry.center();
+        if (stlFiles[idx].scale) {
+            var sc = stlFiles[idx].scale;
+            if (Array.isArray(sc)) { geometry.scale(sc[0], sc[1], sc[2]); size.set(size.x*sc[0], size.y*sc[1], size.z*sc[2]); }
+            else { geometry.scale(sc, sc, sc); size.multiplyScalar(sc); }
+        }
+        var mesh = new THREE.Mesh(geometry, stlFiles[idx].material);
+        mesh.castShadow = true; mesh.receiveShadow = true;
+        var triCount = (geometry.attributes.position.count / 3) | 0;
+        dbg('OK: ' + stlFiles[idx].name + ' [' + size.x.toFixed(1) + 'x' + size.y.toFixed(1) + 'x' + size.z.toFixed(1) + '] ' + triCount + ' tri');
+        var edgeGeo = new THREE.EdgesGeometry(geometry, 5);
+        var edgeLines = new THREE.LineSegments(edgeGeo, matEdge);
+        mesh.add(edgeLines);
+        stlFiles[idx].material.envMap = cubeRT.texture;
+        stlFiles[idx].material.envMapIntensity = 0.6;
+        stlFiles[idx].material.needsUpdate = true;
+        var fi = stlFiles[idx];
+        components[idx] = {
+            mesh: mesh, name: fi.name, size: size,
+            assembled: { pos: new THREE.Vector3(fi.assembledPos[0], fi.assembledPos[1], fi.assembledPos[2]),
+                         rot: new THREE.Euler(fi.assembledRot[0], fi.assembledRot[1], fi.assembledRot[2]) },
+            exploded: { pos: new THREE.Vector3(fi.explodeDir[0], fi.explodeDir[1], fi.explodeDir[2]),
+                        rot: new THREE.Euler(fi.explodeDir[1]*0.01, fi.explodeDir[0]*0.01, 0) }
+        };
+        if (idx === 1) {
+            var sw = 32, sh = 40, sr = 5;
+            var screenShape = new THREE.Shape();
+            screenShape.moveTo(-sw/2 + sr, -sh/2);
+            screenShape.lineTo(sw/2 - sr, -sh/2);
+            screenShape.quadraticCurveTo(sw/2, -sh/2, sw/2, -sh/2 + sr);
+            screenShape.lineTo(sw/2, sh/2 - sr);
+            screenShape.quadraticCurveTo(sw/2, sh/2, sw/2 - sr, sh/2);
+            screenShape.lineTo(-sw/2 + sr, sh/2);
+            screenShape.quadraticCurveTo(-sw/2, sh/2, -sw/2, sh/2 - sr);
+            screenShape.lineTo(-sw/2, -sh/2 + sr);
+            screenShape.quadraticCurveTo(-sw/2, -sh/2, -sw/2 + sr, -sh/2);
+            var screenGeo = new THREE.ShapeGeometry(screenShape);
+            var screenPlane = new THREE.Mesh(screenGeo, matScreen);
+            screenPlane.position.z = 5.5;
+            mesh.add(screenPlane);
+        }
+        watchGroup.add(mesh);
+        checkDone();
+    }
+
+    function fileError(idx, err) { dbg('HATA: ' + stlFiles[idx].name + ' - ' + err); checkDone(); }
+
+    function checkDone() {
+        loadedCount++;
+        document.getElementById('loading-fill').style.width = ((loadedCount/totalFiles)*100) + '%';
+        document.getElementById('loading-text').textContent = loadedCount + '/' + totalFiles + ' yuklendi';
+        if (loadedCount >= totalFiles) {
+            dbg('Tum dosyalar yuklendi');
+            setTimeout(function() { finalizeScene(); document.getElementById('loading').style.display = 'none'; setTimeout(function(){ playCurrentMode(); }, 600); }, 500);
+        }
+    }
+
+    dbg('Dosyalar yukleniyor...');
+    for (var i = 0; i < stlFiles.length; i++) {
+        (function(idx) {
+            stlLoader.load(stlFiles[idx].path, function(g) { fileLoaded(g, idx); }, undefined, function(e) { fileError(idx, e); });
+        })(i);
+    }
+
+    // ==================== FINALIZE ====================
+    var modelMaxDim = 120;
+    function finalizeScene() {
+        for (var i = 0; i < components.length; i++) {
+            if (!components[i]) continue;
+            components[i].mesh.position.copy(components[i].assembled.pos);
+            if (components[i].assembled.rot) components[i].mesh.rotation.copy(components[i].assembled.rot);
+        }
+        var box = new THREE.Box3();
+        for (var i = 0; i < components.length; i++) { if (components[i]) box.expandByObject(components[i].mesh); }
+        var size = new THREE.Vector3(); box.getSize(size);
+        modelMaxDim = Math.max(size.x, size.y, size.z);
+        dbg('Sahne boyut: ' + size.x.toFixed(1) + 'x' + size.y.toFixed(1) + 'x' + size.z.toFixed(1));
+        camR = modelMaxDim * 2;
+        camera.position.set(camR * 0.5, camR * 0.4, camR * 0.7);
+        camera.lookAt(0, 0, 0);
+        camera.near = 0.1; camera.far = modelMaxDim * 50;
+        camera.updateProjectionMatrix();
+        keyLight.position.set(modelMaxDim, modelMaxDim * 1.5, modelMaxDim * 0.8);
+        fillLight.position.set(-modelMaxDim * 0.8, modelMaxDim * 0.4, -modelMaxDim * 0.5);
+        ground.position.y = -modelMaxDim * 0.7;
+        // Attach logo plane to case body mesh
+        if (logoPlane && components[1]) {
+            components[1].mesh.add(logoPlane);
+        }
+        dbg('Sahne hazir! Kamera R=' + camR.toFixed(0));
+        setTimeout(function() { debugEl.style.opacity = '0.2'; }, 6000);
+        // Apply default light mode
+        if (isLightMode) {
+            document.body.classList.add('light-mode');
+            document.getElementById('theme-icon-sun').style.display = 'block';
+            document.getElementById('theme-icon-moon').style.display = 'none';
+            scene.background.setHex(0xffffff);
+            ground.visible = false;
+        }
+    }
+
+    // ==================== ANIMATION HELPERS ====================
+    function easeBack(t) { var c=2.2; return 1+(c+1)*Math.pow(t-1,3)+c*Math.pow(t-1,2); }
+    function easeQ(t) { return t<0.5?8*t*t*t*t:1-Math.pow(-2*t+2,4)/2; }
+    function lerpV(a,b,t) { return new THREE.Vector3(a.x+(b.x-a.x)*t, a.y+(b.y-a.y)*t, a.z+(b.z-a.z)*t); }
+    function lerpE(a,b,t) { return new THREE.Euler(a.x+(b.x-a.x)*t, a.y+(b.y-a.y)*t, a.z+(b.z-a.z)*t); }
+    function lerpF(a,b,t) { return a+(b-a)*t; }
+
+    function syncBands() {
+        if(components[0] && components[5]) {
+            var caseDelta = new THREE.Vector3().subVectors(components[0].mesh.position, components[0].assembled.pos);
+            components[5].mesh.position.copy(components[5].assembled.pos).add(caseDelta);
+            components[5].mesh.rotation.copy(components[5].assembled.rot);
+        }
+    }
+
+    function resetMaterials() {
+        for (var i = 0; i < allMats.length; i++) {
+            allMats[i].opacity = 1;
+            allMats[i].transparent = false;
+            allMats[i].depthWrite = true;
+            allMats[i].wireframe = false;
+            if (allMats[i].emissive) allMats[i].emissive.setHex(0x000000);
+            allMats[i].emissiveIntensity = 1;
+            allMats[i].needsUpdate = true;
+        }
+        // Hide logo plane when switching modes
+        if (logoPlane) logoPlane.visible = false;
+        // Restore ground and shadows (respect light mode)
+        ground.visible = !isLightMode;
+        renderer.shadowMap.enabled = !isLightMode;
+        matEdge.opacity = 0.35; matEdge.needsUpdate = true;
+    }
+
+    function setAssembled() {
+        watchGroup.scale.set(1,1,1);
+        for (var i = 0; i < components.length; i++) {
+            if (!components[i]) continue;
+            components[i].mesh.visible = true;
+            components[i].mesh.position.copy(components[i].assembled.pos);
+            components[i].mesh.rotation.copy(components[i].assembled.rot);
+        }
+    }
+
+    // ==================== MODE SYSTEM ====================
+    var activeMode = 'exploded';
+    var modeState = { phase: 'idle', startTime: 0, data: {} };
+    var autoRotate = true;
+    var clock = new THREE.Clock();
+
+    // Exploded animation config
+    var durations = { scale_up: 2.5, hold1: 1.5, explode: 4.5, hold_ex: 3.5, assemble: 4.5, hold2: 2.0 };
+    var phaseNames = ['scale_up','hold1','explode','hold_ex','assemble','hold2'];
+    var totalDur = 0; for (var k in durations) totalDur += durations[k];
+
+    function getPhase(el) {
+        var c=0;
+        for (var i=0;i<phaseNames.length;i++) { c+=durations[phaseNames[i]]; if(el<c) { var s=c-durations[phaseNames[i]]; return {phase:phaseNames[i],t:(el-s)/durations[phaseNames[i]]}; } }
+        return {phase:'done',t:1};
+    }
+
+    // Layer-by-layer config
+    var layerOrder = [5, 0, 3, 4, 2, 1];
+    var layerStepDur = 2.2;
+
+    // Focus tour config
+    var focusOrder = [0, 1, 2, 3, 4, 5];
+    var focusStepDur = 5;
+    var focusCamTargets = [
+        { ry: 0.5, rx: 0.3, dist: 180 },
+        { ry: 0.0, rx: 0.1, dist: 110 },
+        { ry: 0.8, rx: 0.15, dist: 120 },
+        { ry: -0.4, rx: -0.25, dist: 100 },
+        { ry: 0.4, rx: -0.25, dist: 100 },
+        { ry: 0.7, rx: 0.35, dist: 200 }
+    ];
+
+    // ==================== MODE SWITCH ====================
+    window.switchMode = function(mode) {
+        // Hide diagram overlay when switching to any mode
+        var diagramOverlay = document.getElementById('diagram-overlay');
+        diagramOverlay.classList.remove('visible');
+        renderer.domElement.style.display = '';
+
+        modeState.phase = 'idle';
+        modeState.data = {};
+        resetMaterials();
+        setAssembled();
+        document.querySelectorAll('.comp-label').forEach(function(l){ l.remove(); });
+        document.getElementById('comp-info').classList.remove('visible');
+        document.getElementById('watch-face').classList.remove('visible');
+        wfCurrentSlide = -1;
+        setWfSlide(0);
+        document.getElementById('progress-fill').style.width = '0%';
+        document.getElementById('info').textContent = 'DiaAgent Smartwatch';
+
+        document.querySelectorAll('.mode-btn').forEach(function(b){ b.classList.remove('active'); });
+        document.getElementById('mode-' + mode).classList.add('active');
+        activeMode = mode;
+
+        // Auto-start all modes
+        modeState.startTime = clock.getElapsedTime();
+        modeState.phase = 'playing';
+
+        if (mode === 'diagram') {
+            diagramOverlay.classList.add('visible');
+            renderer.domElement.style.display = 'none';
+            modeState.phase = 'idle';
+        }
+        else if (mode === 'exploded') {
+            watchGroup.scale.set(0.01, 0.01, 0.01);
+            for (var i=0;i<components.length;i++) {
+                if(!components[i]) continue;
+                components[i].mesh.position.copy(components[i].assembled.pos);
+                components[i].mesh.rotation.copy(components[i].assembled.rot);
+            }
+        }
+        else if (mode === 'electronics') {
+            if (components[5]) components[5].mesh.visible = false;
+            watchGroup.scale.set(0.01, 0.01, 0.01);
+            for (var i=0;i<components.length;i++) {
+                if(!components[i]) continue;
+                if (i === 5) continue;
+                components[i].mesh.position.copy(components[i].assembled.pos);
+                components[i].mesh.rotation.copy(components[i].assembled.rot);
+            }
+        }
+        else if (mode === 'turntable') {
+            modeState.data.baseRotY = rotY;
+        }
+        else if (mode === 'xray') {
+            modeState.data.labelsShown = false;
+        }
+        else if (mode === 'xray-electronics') {
+            modeState.data.labelsShown = false;
+            if (components[5]) components[5].mesh.visible = false;
+        }
+        else if (mode === 'layered') {
+            modeState.data.labelsShown = false;
+            for (var i=0;i<components.length;i++) { if(components[i]) components[i].mesh.visible = false; }
+        }
+        else if (mode === 'focus') {
+            // focus starts with assembled view
+        }
+        else if (mode === 'watchface') {
+            modeState.data.baseRotY = rotY;
+        }
+        else if (mode === 'wireframe') {
+            for (var i = 0; i < allMats.length; i++) { allMats[i].wireframe = true; allMats[i].needsUpdate = true; }
+            matEdge.opacity = 0.6; matEdge.needsUpdate = true;
+        }
+        else if (mode === 'heartbeat') {
+            modeState.data.baseRotY = rotY;
+        }
+        else if (mode === 'cinematic') {
+            modeState.data.baseRotY = rotY;
+        }
+    };
+
+    window.playCurrentMode = function() {
+        modeState.startTime = clock.getElapsedTime();
+        modeState.data = {};
+        resetMaterials();
+
+        if (activeMode === 'exploded') {
+            modeState.phase = 'playing';
+            watchGroup.scale.set(0.01, 0.01, 0.01);
+            for (var i=0;i<components.length;i++) {
+                if(!components[i]) continue;
+                components[i].mesh.visible = true;
+                components[i].mesh.position.copy(components[i].assembled.pos);
+                components[i].mesh.rotation.copy(components[i].assembled.rot);
+            }
+            document.querySelectorAll('.comp-label').forEach(function(l){l.remove();});
+        }
+        else if (activeMode === 'electronics') {
+            modeState.phase = 'playing';
+            watchGroup.scale.set(0.01, 0.01, 0.01);
+            for (var i=0;i<components.length;i++) {
+                if(!components[i]) continue;
+                if (i === 5) { components[i].mesh.visible = false; continue; }
+                components[i].mesh.visible = true;
+                components[i].mesh.position.copy(components[i].assembled.pos);
+                components[i].mesh.rotation.copy(components[i].assembled.rot);
+            }
+            document.querySelectorAll('.comp-label').forEach(function(l){l.remove();});
+        }
+        else if (activeMode === 'turntable') {
+            modeState.phase = 'playing';
+            modeState.data.baseRotY = rotY;
+            setAssembled();
+        }
+        else if (activeMode === 'xray') {
+            modeState.phase = 'playing';
+            modeState.data.labelsShown = false;
+            setAssembled();
+        }
+        else if (activeMode === 'xray-electronics') {
+            modeState.phase = 'playing';
+            modeState.data.labelsShown = false;
+            setAssembled();
+            if (components[5]) components[5].mesh.visible = false;
+        }
+        else if (activeMode === 'layered') {
+            modeState.phase = 'playing';
+            for (var i=0;i<components.length;i++) { if(components[i]) components[i].mesh.visible = false; }
+            document.querySelectorAll('.comp-label').forEach(function(l){l.remove();});
+        }
+        else if (activeMode === 'focus') {
+            modeState.phase = 'playing';
+            setAssembled();
+        }
+        else if (activeMode === 'watchface') {
+            modeState.phase = 'playing';
+            modeState.data.baseRotY = rotY;
+            setAssembled();
+        }
+        else if (activeMode === 'wireframe') {
+            modeState.phase = 'playing';
+            setAssembled();
+            for (var i = 0; i < allMats.length; i++) { allMats[i].wireframe = true; allMats[i].needsUpdate = true; }
+        }
+        else if (activeMode === 'heartbeat') {
+            modeState.phase = 'playing';
+            modeState.data.baseRotY = rotY;
+            setAssembled();
+        }
+        else if (activeMode === 'cinematic') {
+            modeState.phase = 'playing';
+            modeState.data.baseRotY = rotY;
+            setAssembled();
+        }
+    };
+
+    window.resetCurrentMode = function() {
+        modeState.phase = 'idle';
+        modeState.data = {};
+        resetMaterials();
+        setAssembled();
+        document.querySelectorAll('.comp-label').forEach(function(l){l.remove();});
+        document.getElementById('comp-info').classList.remove('visible');
+        document.getElementById('watch-face').classList.remove('visible');
+        wfCurrentSlide = -1;
+        setWfSlide(0);
+        document.getElementById('progress-fill').style.width = '0%';
+        document.getElementById('info').textContent = 'DiaAgent Smartwatch';
+    };
+
+    window.toggleAutoRotate = function() { autoRotate = !autoRotate; };
+
+    // ==================== THEME TOGGLE ====================
+    var isLightMode = true;
+    window.toggleTheme = function() {
+        isLightMode = !isLightMode;
+        document.body.classList.toggle('light-mode', isLightMode);
+        document.getElementById('theme-icon-sun').style.display = isLightMode ? 'block' : 'none';
+        document.getElementById('theme-icon-moon').style.display = isLightMode ? 'none' : 'block';
+        if (isLightMode) {
+            scene.background.setHex(0xffffff);
+            ground.visible = false;
+        } else {
+            scene.background.setHex(0x08080c);
+            ground.visible = true;
+            ground.material.color.setHex(0x0c0c10);
+            ground.material.needsUpdate = true;
+        }
+    };
+
+    // ==================== LABELS ====================
+    function makeLabels() {
+        var ct = document.getElementById('label-container');
+        if (ct.children.length > 0) return;
+        for (var i=0;i<components.length;i++) {
+            if(!components[i]) continue;
+            var el = document.createElement('div');
+            el.className='comp-label'; el.textContent=components[i].name; el.id='lbl-'+i;
+            ct.appendChild(el);
+        }
+    }
+    function showLabels(show) {
+        for (var i=0;i<components.length;i++) {
+            if(!components[i]) continue;
+            var el = document.getElementById('lbl-'+i);
+            if(!el) continue;
+            if(!show){el.style.opacity='0';continue;}
+            var wp = new THREE.Vector3(); components[i].mesh.getWorldPosition(wp);
+            var sp = wp.project(camera.clone());
+            if(sp.z<1){
+                el.style.left=((sp.x*0.5+0.5)*innerWidth)+'px';
+                el.style.top=((-sp.y*0.5+0.5)*innerHeight)+'px';
+                el.style.transform='translate(-50%,-130%)';
+                el.style.opacity = components[i].mesh.visible ? '1' : '0';
+            } else el.style.opacity='0';
+        }
+    }
+
+    // ==================== EXPLODED ANIMATION ====================
+    function animateExploded(elapsed) {
+        var ae = elapsed - modeState.startTime;
+        document.getElementById('progress-fill').style.width = (Math.min(ae/totalDur,1)*100)+'%';
+        var p = getPhase(ae);
+        var info = document.getElementById('info');
+        var n = components.length;
+
+        if (p.phase==='scale_up') {
+            var s = easeBack(Math.min(p.t,1));
+            watchGroup.scale.set(s,s,s);
+            for(var i=0;i<n;i++){if(components[i]){components[i].mesh.position.copy(components[i].assembled.pos);components[i].mesh.rotation.copy(components[i].assembled.rot);}}
+            info.textContent='DiaAgent Smartwatch';
+        }
+        else if (p.phase==='hold1') {
+            watchGroup.scale.set(1,1,1);
+            info.textContent='DiaAgent Smartwatch';
+        }
+        else if (p.phase==='explode') {
+            watchGroup.scale.set(1,1,1);
+            var lcdIdx = 1;
+            var lcdMidPos = new THREE.Vector3(-1, 0, 20);
+            for(var i=0;i<n;i++){
+                if(!components[i]) continue;
+                if(i === lcdIdx) {
+                    if(p.t <= 0.25) {
+                        var ft = easeQ(p.t / 0.25);
+                        components[i].mesh.position.copy(lerpV(components[i].assembled.pos, lcdMidPos, ft));
+                        components[i].mesh.rotation.copy(components[i].assembled.rot);
+                    } else {
+                        var ft = easeQ(Math.min(1, (p.t - 0.25) / 0.35));
+                        components[i].mesh.position.copy(lerpV(lcdMidPos, components[i].exploded.pos, ft));
+                        components[i].mesh.rotation.copy(lerpE(components[i].assembled.rot, components[i].exploded.rot, ft));
+                    }
+                } else {
+                    var compStart = 0.35;
+                    var at = Math.max(0, Math.min(1, (p.t - compStart - i*0.04) / (1.0 - compStart - i*0.04)));
+                    var et = easeQ(at);
+                    components[i].mesh.position.copy(lerpV(components[i].assembled.pos, components[i].exploded.pos, et));
+                    components[i].mesh.rotation.copy(lerpE(components[i].assembled.rot, components[i].exploded.rot, et));
+                }
+            }
+            info.textContent = p.t < 0.3 ? 'LCD Ekran Ayriliyor...' : 'Komponentler Ayrisiyor...';
+        }
+        else if (p.phase==='hold_ex') {
+            for(var i=0;i<n;i++){if(components[i]){components[i].mesh.position.copy(components[i].exploded.pos);components[i].mesh.rotation.copy(components[i].exploded.rot);}}
+            info.textContent='Dahili Komponentler';
+        }
+        else if (p.phase==='assemble') {
+            var lcdIdx = 1;
+            var lcdMidPos = new THREE.Vector3(-1, 0, 20);
+            for(var i=0;i<n;i++){
+                if(!components[i]) continue;
+                if(i === lcdIdx) {
+                    if(p.t < 0.4) {
+                        components[i].mesh.position.copy(components[i].exploded.pos);
+                        components[i].mesh.rotation.copy(components[i].exploded.rot);
+                    } else if(p.t <= 0.7) {
+                        var ft = easeQ((p.t - 0.4) / 0.3);
+                        components[i].mesh.position.copy(lerpV(components[i].exploded.pos, lcdMidPos, ft));
+                        components[i].mesh.rotation.copy(lerpE(components[i].exploded.rot, components[i].assembled.rot, ft));
+                    } else {
+                        var ft = easeQ((p.t - 0.7) / 0.3);
+                        components[i].mesh.position.copy(lerpV(lcdMidPos, components[i].assembled.pos, ft));
+                        components[i].mesh.rotation.copy(components[i].assembled.rot);
+                    }
+                } else {
+                    var delay = (n-1-i) * 0.04;
+                    var at = Math.max(0, Math.min(1, (p.t - delay) / (0.55 - delay)));
+                    var et = easeQ(at);
+                    components[i].mesh.position.copy(lerpV(components[i].exploded.pos, components[i].assembled.pos, et));
+                    components[i].mesh.rotation.copy(lerpE(components[i].exploded.rot, components[i].assembled.rot, et));
+                }
+            }
+            info.textContent = p.t < 0.7 ? 'Montaj...' : 'LCD Ekran Yerlesiyor...';
+        }
+        else if (p.phase==='hold2') {
+            for(var i=0;i<n;i++){if(components[i]){components[i].mesh.position.copy(components[i].assembled.pos);components[i].mesh.rotation.copy(components[i].assembled.rot);}}
+            info.textContent='DiaAgent Smartwatch';
+        }
+        else if (p.phase==='done') {
+            modeState.phase='idle';
+            document.querySelectorAll('.comp-label').forEach(function(l){l.remove();});
+        }
+
+        // Band sync
+        syncBands();
+    }
+
+    // ==================== ELECTRONICS EXPLODED ANIMATION ====================
+    // Neat side-by-side positions for electronics mode (no rotation, all upright)
+    // Layered Z-axis positions: components spread forward, X/Y stays as assembled
+    var elecLcdForward = new THREE.Vector3(-1, 0, 55);    // LCD once buraya cikar
+    var elecNeatPos = [
+        new THREE.Vector3( 0,   0,    0),    // [0] Kasa - yerinde kalir
+        new THREE.Vector3(50,   0,    4),    // [1] LCD - sonra kasanin yanina gider
+        new THREE.Vector3( 0,   8,  -40),    // [2] Batarya - arkaya cikar
+        new THREE.Vector3( 8, -12,  -70),    // [3] MLX90614 - daha arkaya
+        new THREE.Vector3(-7, -12,  -70)     // [4] MAX30100 - daha arkaya
+    ];
+    // Keep assembled rotations so components look correct in layered view
+    var elecNeatRots = [
+        new THREE.Euler(0, 0, 0),                          // [0] Kasa
+        new THREE.Euler(0.2, 0.45, 0),                        // [1] LCD (hafif egimli - arka mavi kisim gorunsun)
+        new THREE.Euler(-Math.PI/2, -Math.PI/2, 0),        // [2] Batarya (assembled rot)
+        new THREE.Euler(Math.PI, 0, 0),                    // [3] MLX (assembled rot)
+        new THREE.Euler(Math.PI, 0, 0)                     // [4] MAX (assembled rot)
+    ];
+
+    function animateElectronics(elapsed) {
+        var ae = elapsed - modeState.startTime;
+        document.getElementById('progress-fill').style.width = (Math.min(ae/totalDur,1)*100)+'%';
+        var p = getPhase(ae);
+        var info = document.getElementById('info');
+
+        // Always hide band
+        if (components[5]) components[5].mesh.visible = false;
+
+        if (p.phase==='scale_up') {
+            var s = easeBack(Math.min(p.t,1));
+            watchGroup.scale.set(s,s,s);
+            for(var i=0;i<5;i++){
+                if(!components[i]) continue;
+                components[i].mesh.position.copy(components[i].assembled.pos);
+                components[i].mesh.rotation.copy(components[i].assembled.rot);
+            }
+            info.textContent='Elektronik Komponentler';
+        }
+        else if (p.phase==='hold1') {
+            watchGroup.scale.set(1,1,1);
+            info.textContent='Elektronik Komponentler';
+        }
+        else if (p.phase==='explode') {
+            // LCD forward (0-0.15), LCD waits forward (0.15-0.55), LCD slides to side (0.55-0.7), sensors+battery out (0.7-0.95)
+            watchGroup.scale.set(1,1,1);
+            for(var i=0;i<5;i++){
+                if(!components[i]) continue;
+                if (i === 1) {
+                    // LCD: 3 stages - forward, wait, then slide to side
+                    if (p.t < 0.15) {
+                        var et = easeQ(p.t / 0.15);
+                        components[1].mesh.position.copy(lerpV(components[1].assembled.pos, elecLcdForward, et));
+                        components[1].mesh.rotation.copy(components[1].assembled.rot);
+                    } else if (p.t < 0.55) {
+                        // LCD waits forward
+                        components[1].mesh.position.copy(elecLcdForward);
+                        components[1].mesh.rotation.copy(components[1].assembled.rot);
+                    } else {
+                        var et = easeQ(Math.min(1, (p.t - 0.55) / 0.15));
+                        components[1].mesh.position.copy(lerpV(elecLcdForward, elecNeatPos[1], et));
+                        components[1].mesh.rotation.copy(lerpE(components[1].assembled.rot, elecNeatRots[1], et));
+                    }
+                } else if (i === 2 || i === 3 || i === 4) {
+                    // Sensors + Battery: after LCD moves to side
+                    var et = easeQ(Math.max(0, Math.min(1, (p.t - 0.7) / 0.25)));
+                    components[i].mesh.position.copy(lerpV(components[i].assembled.pos, elecNeatPos[i], et));
+                    components[i].mesh.rotation.copy(components[i].assembled.rot);
+                } else {
+                    // Case: stays in place
+                    components[i].mesh.position.copy(components[i].assembled.pos);
+                    components[i].mesh.rotation.copy(components[i].assembled.rot);
+                }
+            }
+            if (p.t < 0.15) info.textContent = 'LCD Ekran Ayriliyor...';
+            else if (p.t < 0.55) info.textContent = 'Dahili Sensor Yerlesimi';
+            else if (p.t < 0.7) info.textContent = 'LCD Ekran Kenara Kayiyor...';
+            else info.textContent = 'Sensorler ve Batarya Ayrisiyor...';
+        }
+        else if (p.phase==='hold_ex') {
+            for(var i=0;i<5;i++){
+                if(!components[i]) continue;
+                components[i].mesh.position.copy(elecNeatPos[i]);
+                if (i === 0) components[i].mesh.rotation.copy(components[i].assembled.rot);
+                else if (i === 2 || i === 3 || i === 4) components[i].mesh.rotation.copy(components[i].assembled.rot);
+                else components[i].mesh.rotation.copy(elecNeatRots[i]);
+            }
+            info.textContent='Elektronik Komponentler';
+        }
+        else if (p.phase==='assemble') {
+            // Reverse: sensors+battery back first, LCD from side to forward, then LCD into case
+            for(var i=0;i<5;i++){
+                if(!components[i]) continue;
+                if (i === 1) {
+                    // LCD: side → forward → assembled
+                    if (p.t < 0.3) {
+                        // Sensors going back, LCD stays at side
+                        components[1].mesh.position.copy(elecNeatPos[1]);
+                        components[1].mesh.rotation.copy(elecNeatRots[1]);
+                    } else if (p.t < 0.5) {
+                        // LCD slides from side to forward position
+                        var et = easeQ((p.t - 0.3) / 0.2);
+                        components[1].mesh.position.copy(lerpV(elecNeatPos[1], elecLcdForward, et));
+                        components[1].mesh.rotation.copy(lerpE(elecNeatRots[1], components[1].assembled.rot, et));
+                    } else {
+                        // LCD from forward into assembled
+                        var et = easeQ((p.t - 0.5) / 0.25);
+                        components[1].mesh.position.copy(lerpV(elecLcdForward, components[1].assembled.pos, et));
+                        components[1].mesh.rotation.copy(components[1].assembled.rot);
+                    }
+                } else if (i === 2 || i === 3 || i === 4) {
+                    // Sensors + Battery: back first (t: 0 - 0.3)
+                    var et = easeQ(Math.max(0, Math.min(1, p.t / 0.3)));
+                    components[i].mesh.position.copy(lerpV(elecNeatPos[i], components[i].assembled.pos, et));
+                    components[i].mesh.rotation.copy(components[i].assembled.rot);
+                } else {
+                    // Case: stays
+                    components[i].mesh.position.copy(components[i].assembled.pos);
+                    components[i].mesh.rotation.copy(components[i].assembled.rot);
+                }
+            }
+            if (p.t < 0.3) info.textContent = 'Sensorler Yerlesiyor...';
+            else if (p.t < 0.5) info.textContent = 'LCD Ekran Donuyor...';
+            else info.textContent = 'LCD Ekran Yerlesiyor...';
+        }
+        else if (p.phase==='hold2') {
+            for(var i=0;i<5;i++){
+                if(!components[i]) continue;
+                components[i].mesh.position.copy(components[i].assembled.pos);
+                components[i].mesh.rotation.copy(components[i].assembled.rot);
+            }
+            info.textContent='Elektronik Komponentler';
+        }
+        else if (p.phase==='done') {
+            modeState.phase='idle';
+            document.querySelectorAll('.comp-label').forEach(function(l){l.remove();});
+        }
+    }
+
+    // ==================== TURNTABLE ANIMATION ====================
+    function animateTurntable(elapsed) {
+        var t = elapsed - modeState.startTime;
+        rotY = modeState.data.baseRotY + t * 0.4;
+        rotX = 0.25 + Math.sin(t * 0.15) * 0.08;
+        setAssembled();
+        syncBands();
+        // Show logo on watch screen
+        if (logoPlane) logoPlane.visible = true;
+        // Hide ground and shadows in turntable
+        ground.visible = false;
+        renderer.shadowMap.enabled = false;
+        document.getElementById('info').textContent = 'DiaAgent Smartwatch \u2014 360\u00b0';
+    }
+
+    // ==================== X-RAY ANIMATION ====================
+    function animateXRay(elapsed) {
+        var t = elapsed - modeState.startTime;
+        var info = document.getElementById('info');
+        setAssembled();
+        syncBands();
+
+        if (t < 2.5) {
+            // Phase 1: Case becomes transparent
+            var ft = easeQ(Math.min(1, t / 2.5));
+            matCase.opacity = 1 - ft * 0.82;
+            matCase.transparent = true;
+            matCase.depthWrite = false;
+            matCase.needsUpdate = true;
+            matBand.opacity = 1 - ft * 0.55;
+            matBand.transparent = true;
+            matBand.depthWrite = false;
+            matBand.needsUpdate = true;
+            info.textContent = 'Rontgen Gorunum...';
+        }
+        else if (t < 4.5) {
+            // Phase 2: Internal components glow
+            matCase.opacity = 0.18; matCase.transparent = true; matCase.depthWrite = false; matCase.needsUpdate = true;
+            matBand.opacity = 0.45; matBand.transparent = true; matBand.depthWrite = false; matBand.needsUpdate = true;
+            var ft = easeQ((t - 2.5) / 2);
+            matESP.emissive.setRGB(0.04*ft, 0.1*ft, 0.25*ft); matESP.needsUpdate = true;
+            matBattery.emissive.setRGB(0.08*ft, 0.15*ft, 0.22*ft); matBattery.needsUpdate = true;
+            matSensorMLX.emissive.setRGB(0.04*ft, 0.06*ft, 0.25*ft); matSensorMLX.needsUpdate = true;
+            matSensorMAX.emissive.setRGB(0.04*ft, 0.2*ft, 0.06*ft); matSensorMAX.needsUpdate = true;
+            info.textContent = 'Dahili Komponentler';
+        }
+        else {
+            // Phase 3: Hold, show labels
+            matCase.opacity = 0.18; matCase.transparent = true; matCase.depthWrite = false; matCase.needsUpdate = true;
+            matBand.opacity = 0.45; matBand.transparent = true; matBand.depthWrite = false; matBand.needsUpdate = true;
+            matESP.emissive.setRGB(0.04, 0.1, 0.25); matESP.needsUpdate = true;
+            matBattery.emissive.setRGB(0.08, 0.15, 0.22); matBattery.needsUpdate = true;
+            matSensorMLX.emissive.setRGB(0.04, 0.06, 0.25); matSensorMLX.needsUpdate = true;
+            matSensorMAX.emissive.setRGB(0.04, 0.2, 0.06); matSensorMAX.needsUpdate = true;
+            info.textContent = 'Dahili Komponentler';
+            // Pulse effect
+            var pulse = 0.5 + 0.5 * Math.sin(t * 2);
+            matESP.emissiveIntensity = 0.8 + pulse * 0.4;
+            matBattery.emissiveIntensity = 0.8 + pulse * 0.4;
+            matSensorMLX.emissiveIntensity = 0.8 + pulse * 0.4;
+            matSensorMAX.emissiveIntensity = 0.8 + pulse * 0.4;
+        }
+
+        document.getElementById('progress-fill').style.width = (Math.min(1, t/5)*100) + '%';
+    }
+
+    // ==================== X-RAY ELECTRONICS ANIMATION ====================
+    function animateXRayElectronics(elapsed) {
+        var t = elapsed - modeState.startTime;
+        var info = document.getElementById('info');
+        setAssembled();
+        // Hide band
+        if (components[5]) components[5].mesh.visible = false;
+
+        if (t < 2.5) {
+            // Phase 1: Case becomes transparent
+            var ft = easeQ(Math.min(1, t / 2.5));
+            matCase.opacity = 1 - ft * 0.82;
+            matCase.transparent = true;
+            matCase.depthWrite = false;
+            matCase.needsUpdate = true;
+            info.textContent = 'Elektronik Rontgen...';
+        }
+        else if (t < 4.5) {
+            // Phase 2: Internal components glow
+            matCase.opacity = 0.18; matCase.transparent = true; matCase.depthWrite = false; matCase.needsUpdate = true;
+            var ft = easeQ((t - 2.5) / 2);
+            matESP.emissive.setRGB(0.04*ft, 0.1*ft, 0.25*ft); matESP.needsUpdate = true;
+            matBattery.emissive.setRGB(0.08*ft, 0.15*ft, 0.22*ft); matBattery.needsUpdate = true;
+            matSensorMLX.emissive.setRGB(0.04*ft, 0.06*ft, 0.25*ft); matSensorMLX.needsUpdate = true;
+            matSensorMAX.emissive.setRGB(0.04*ft, 0.2*ft, 0.06*ft); matSensorMAX.needsUpdate = true;
+            info.textContent = 'Elektronik Komponentler';
+        }
+        else {
+            // Phase 3: Hold with pulse
+            matCase.opacity = 0.18; matCase.transparent = true; matCase.depthWrite = false; matCase.needsUpdate = true;
+            matESP.emissive.setRGB(0.04, 0.1, 0.25); matESP.needsUpdate = true;
+            matBattery.emissive.setRGB(0.08, 0.15, 0.22); matBattery.needsUpdate = true;
+            matSensorMLX.emissive.setRGB(0.04, 0.06, 0.25); matSensorMLX.needsUpdate = true;
+            matSensorMAX.emissive.setRGB(0.04, 0.2, 0.06); matSensorMAX.needsUpdate = true;
+            info.textContent = 'Elektronik Komponentler';
+            var pulse = 0.5 + 0.5 * Math.sin(t * 2);
+            matESP.emissiveIntensity = 0.8 + pulse * 0.4;
+            matBattery.emissiveIntensity = 0.8 + pulse * 0.4;
+            matSensorMLX.emissiveIntensity = 0.8 + pulse * 0.4;
+            matSensorMAX.emissiveIntensity = 0.8 + pulse * 0.4;
+        }
+
+        document.getElementById('progress-fill').style.width = (Math.min(1, t/5)*100) + '%';
+    }
+
+    // ==================== LAYER-BY-LAYER ANIMATION ====================
+    function animateLayered(elapsed) {
+        var t = elapsed - modeState.startTime;
+        var info = document.getElementById('info');
+        var overlap = 0.6;
+        var totalLayerDur = (layerOrder.length - 1) * (layerStepDur - overlap) + layerStepDur;
+        var allSettled = true;
+
+        for (var li = 0; li < layerOrder.length; li++) {
+            var ci = layerOrder[li];
+            if (!components[ci]) continue;
+            var startT = li * (layerStepDur - overlap);
+            var localT = Math.max(0, (t - startT) / layerStepDur);
+
+            if (localT <= 0) {
+                components[ci].mesh.visible = false;
+                allSettled = false;
+            } else if (localT < 1) {
+                components[ci].mesh.visible = true;
+                var et = easeBack(Math.min(1, localT));
+                var startPos = components[ci].assembled.pos.clone();
+                startPos.y += 100;
+                components[ci].mesh.position.copy(lerpV(startPos, components[ci].assembled.pos, et));
+                components[ci].mesh.rotation.copy(components[ci].assembled.rot);
+                info.textContent = componentInfo[ci].name;
+                allSettled = false;
+            } else {
+                components[ci].mesh.visible = true;
+                components[ci].mesh.position.copy(components[ci].assembled.pos);
+                components[ci].mesh.rotation.copy(components[ci].assembled.rot);
+            }
+        }
+
+        // Only sync bands after all components settled
+        if (allSettled) syncBands();
+
+        var progress = Math.min(1, t / totalLayerDur);
+        document.getElementById('progress-fill').style.width = (progress * 100) + '%';
+
+        if (t > totalLayerDur + 0.5) {
+            info.textContent = 'Montaj Tamamlandi';
+        }
+    }
+
+    // ==================== FOCUS TOUR ANIMATION ====================
+    function animateFocus(elapsed) {
+        var t = elapsed - modeState.startTime;
+        var info = document.getElementById('info');
+        var totalFocusDur = focusOrder.length * focusStepDur;
+
+        var rawIdx = t / focusStepDur;
+        var currentIdx = Math.min(Math.floor(rawIdx), focusOrder.length - 1);
+        var ci = focusOrder[currentIdx];
+
+        // Smooth camera lerp
+        var target = focusCamTargets[currentIdx];
+        rotY += (target.ry - rotY) * 0.035;
+        rotX += (target.rx - rotX) * 0.035;
+        camR += (target.dist - camR) * 0.035;
+
+        // Dim/highlight components
+        for (var i = 0; i < components.length; i++) {
+            if (!components[i]) continue;
+            components[i].mesh.position.copy(components[i].assembled.pos);
+            components[i].mesh.rotation.copy(components[i].assembled.rot);
+
+            if (i === ci) {
+                stlFiles[i].material.opacity = 1;
+                stlFiles[i].material.transparent = false;
+                stlFiles[i].material.depthWrite = true;
+            } else {
+                stlFiles[i].material.opacity = 0.12;
+                stlFiles[i].material.transparent = true;
+                stlFiles[i].material.depthWrite = false;
+            }
+            stlFiles[i].material.needsUpdate = true;
+        }
+
+        syncBands();
+
+        // Info card
+        var card = document.getElementById('comp-info');
+        var ci_info = componentInfo[ci];
+        document.getElementById('comp-info-name').textContent = ci_info.name;
+        document.getElementById('comp-info-desc').textContent = ci_info.desc;
+        document.getElementById('comp-info-specs').textContent = ci_info.specs;
+        document.getElementById('comp-info-counter').textContent = (currentIdx + 1) + ' / ' + focusOrder.length;
+        card.classList.add('visible');
+
+        info.textContent = ci_info.name;
+
+        document.getElementById('progress-fill').style.width = (Math.min(1, t/totalFocusDur)*100) + '%';
+
+        if (t >= totalFocusDur) {
+            modeState.phase = 'idle';
+            card.classList.remove('visible');
+            resetMaterials();
+            info.textContent = 'DiaAgent Smartwatch';
+        }
+    }
+
+    // ==================== WATCH FACE ANIMATION ====================
+    var wfEcgIdx = 0;
+    var wfUpdateTimer = 0;
+    var wfSlideCount = 5;
+    var wfSlideDur = 3.5; // seconds per slide
+    var wfCurrentSlide = -1;
+
+    // Generate ECG-like waveform
+    function ecgSample(i) {
+        var t = (i % 60) / 60;
+        if (t < 0.1) return 16;
+        if (t < 0.15) return 16 - 4 * Math.sin((t - 0.1) / 0.05 * Math.PI);
+        if (t < 0.2) return 16;
+        if (t < 0.25) return 16 + 12 * Math.sin((t - 0.2) / 0.05 * Math.PI);
+        if (t < 0.3) return 16 - 6 * Math.sin((t - 0.25) / 0.05 * Math.PI);
+        if (t < 0.4) return 16 + 2 * Math.sin((t - 0.3) / 0.1 * Math.PI);
+        return 16;
+    }
+
+    function setWfSlide(idx) {
+        if (idx === wfCurrentSlide) return;
+        wfCurrentSlide = idx;
+        var slides = document.querySelectorAll('.wf-slide');
+        var dots = document.querySelectorAll('.wf-dot');
+        for (var i = 0; i < slides.length; i++) {
+            slides[i].classList.toggle('active', i === idx);
+        }
+        for (var i = 0; i < dots.length; i++) {
+            dots[i].classList.toggle('active', i === idx);
+        }
+    }
+
+    var wfSlideLabels = ['Logo', 'Nabız', 'Tansiyon', 'Adım', 'Sıcaklık'];
+
+    function animateWatchFace(elapsed) {
+        var t = elapsed - modeState.startTime;
+        setAssembled();
+        syncBands();
+
+        // Rotate camera to face the watch screen (+Z front)
+        var targetRY = 0;
+        var targetRX = 0.08;
+        var targetDist = 150;
+        rotY += (targetRY - rotY) * 0.04;
+        rotX += (targetRX - rotX) * 0.04;
+        camR += (targetDist - camR) * 0.04;
+
+        // Project LCD screen corners to get exact size and position
+        var wfEl = document.getElementById('watch-face');
+        if (components[1]) {
+            var cornerTL = new THREE.Vector3(-16, 20, 5.5);
+            var cornerBR = new THREE.Vector3(16, -20, 5.5);
+            var center = new THREE.Vector3(0, 0, 5.5);
+            components[1].mesh.localToWorld(cornerTL);
+            components[1].mesh.localToWorld(cornerBR);
+            components[1].mesh.localToWorld(center);
+            var spTL = cornerTL.project(camera.clone());
+            var spBR = cornerBR.project(camera.clone());
+            var spC = center.clone().project(camera.clone());
+            var sx = (spC.x * 0.5 + 0.5) * innerWidth;
+            var sy = (-spC.y * 0.5 + 0.5) * innerHeight;
+            var screenW = Math.abs((spBR.x - spTL.x) * 0.5 * innerWidth);
+            var screenH = Math.abs((spTL.y - spBR.y) * 0.5 * innerHeight);
+            wfEl.style.left = sx + 'px';
+            wfEl.style.top = sy + 'px';
+            wfEl.style.width = screenW + 'px';
+            wfEl.style.height = screenH + 'px';
+            wfEl.style.transform = 'translate(-50%, -50%)';
+        }
+
+        // Show watch face overlay after camera settles
+        if (t > 0.8) {
+            wfEl.classList.add('visible');
+        }
+
+        // Slideshow: auto-advance after camera settles
+        if (t > 1.0) {
+            var slideTime = t - 1.0;
+            var slideIdx = Math.floor(slideTime / wfSlideDur) % wfSlideCount;
+            setWfSlide(slideIdx);
+        }
+
+        // Update ECG line (always, so it's animated when slide 1 shows)
+        wfEcgIdx++;
+        var pts = [];
+        for (var i = 0; i < 70; i++) {
+            var x = (i / 70) * 280;
+            var y = ecgSample(wfEcgIdx - 70 + i);
+            pts.push(x.toFixed(1) + ',' + y.toFixed(1));
+        }
+        document.getElementById('wf-ecg-path').setAttribute('points', pts.join(' '));
+
+        // Update metrics every ~1.2s
+        wfUpdateTimer += 1 / 60;
+        if (wfUpdateTimer > 1.2) {
+            wfUpdateTimer = 0;
+            var bpm = Math.round(72 + Math.sin(elapsed * 0.8) * 6 + Math.random() * 3);
+            var temp = (36.3 + Math.sin(elapsed * 0.2) * 0.3 + Math.random() * 0.2).toFixed(1);
+            var sys = Math.round(118 + Math.sin(elapsed * 0.3) * 5 + Math.random() * 3);
+            var dia = Math.round(76 + Math.sin(elapsed * 0.4) * 3 + Math.random() * 2);
+            var steps = Math.min(9999, 4827 + Math.floor(elapsed * 0.5));
+
+            document.getElementById('wf-bpm').textContent = bpm;
+            document.getElementById('wf-temp').textContent = temp;
+            document.getElementById('wf-bp').textContent = sys + '/' + dia;
+            document.getElementById('wf-sys').textContent = 'SYS ' + sys;
+            document.getElementById('wf-dia').textContent = 'DIA ' + dia;
+            document.getElementById('wf-steps').textContent = steps.toLocaleString('tr-TR');
+        }
+
+        // Update time on logo slide
+        var now = new Date();
+        var h = String(now.getHours()).padStart(2, '0');
+        var m = String(now.getMinutes()).padStart(2, '0');
+        document.getElementById('wf-time').textContent = h + ':' + m;
+
+        var gunler = ['PAZAR','PAZARTESI','SALI','CARSAMBA','PERSEMBE','CUMA','CUMARTESI'];
+        var aylar = ['OCAK','SUBAT','MART','NISAN','MAYIS','HAZIRAN','TEMMUZ','AGUSTOS','EYLUL','EKIM','KASIM','ARALIK'];
+        document.getElementById('wf-date').textContent = now.getDate() + ' ' + aylar[now.getMonth()] + ' ' + now.getFullYear();
+
+        // Info bar shows current slide label
+        var label = wfSlideLabels[wfCurrentSlide] || 'Logo';
+        document.getElementById('info').textContent = 'DiaAgent \u2014 ' + label;
+    }
+
+    // ==================== WIREFRAME ANIMATION ====================
+    function animateWireframe(elapsed) {
+        var t = elapsed - modeState.startTime;
+        setAssembled();
+        syncBands();
+        // Slow rotation
+        rotY = (modeState.data.baseRotY || 0) + t * 0.25;
+        rotX = 0.3;
+        // Keep wireframe on
+        for (var i = 0; i < allMats.length; i++) { allMats[i].wireframe = true; allMats[i].needsUpdate = true; }
+        document.getElementById('info').textContent = 'Tel Kafes Gorunum';
+    }
+
+    // ==================== HEARTBEAT ANIMATION ====================
+    function animateHeartbeat(elapsed) {
+        var t = elapsed - modeState.startTime;
+        setAssembled();
+        syncBands();
+        // Slow rotation
+        rotY = (modeState.data.baseRotY || 0) + t * 0.15;
+        rotX = 0.2 + Math.sin(t * 0.3) * 0.05;
+
+        // Heartbeat double-pulse: lub...dub...rest
+        var cycle = t % 0.9;
+        var pulse = 1.0;
+        if (cycle < 0.1) pulse = 1 + 0.025 * Math.sin(cycle / 0.1 * Math.PI);
+        else if (cycle > 0.2 && cycle < 0.3) pulse = 1 + 0.018 * Math.sin((cycle - 0.2) / 0.1 * Math.PI);
+        watchGroup.scale.set(pulse, pulse, pulse);
+
+        // Screen glow with heartbeat - red for heartbeat
+        var screenGlow = 0;
+        if (cycle < 0.12) screenGlow = Math.sin(cycle / 0.12 * Math.PI);
+        else if (cycle > 0.2 && cycle < 0.32) screenGlow = 0.6 * Math.sin((cycle - 0.2) / 0.12 * Math.PI);
+        matScreen.emissive.setRGB(0.4 * screenGlow, 0.05 * screenGlow, 0.05 * screenGlow);
+        matScreen.emissiveIntensity = 1;
+        matScreen.needsUpdate = true;
+
+        // Sensors pulse with a subtle glow
+        var sensorPulse = 0.3 + 0.3 * Math.sin(t * 3);
+        matSensorMAX.emissive.setRGB(0.05 * sensorPulse, 0.2 * sensorPulse, 0.05 * sensorPulse);
+        matSensorMLX.emissive.setRGB(0.05 * sensorPulse, 0.05 * sensorPulse, 0.2 * sensorPulse);
+        matSensorMAX.needsUpdate = true;
+        matSensorMLX.needsUpdate = true;
+
+        document.getElementById('info').textContent = 'Nabiz Monitoru \u2014 Canli Veri';
+    }
+
+    // ==================== CINEMATIC ANIMATION ====================
+    var cinematicKeys = [
+        { t: 0,  ry: 0,    rx: 0.3,  dist: 320 },
+        { t: 3,  ry: 0.8,  rx: 0.15, dist: 160 },
+        { t: 6,  ry: 0.3,  rx: 0.03, dist: 85  },
+        { t: 9,  ry: -0.6, rx: -0.2, dist: 110 },
+        { t: 12, ry: -1.5, rx: 0.1,  dist: 140 },
+        { t: 15, ry: -2.5, rx: 0.35, dist: 200 },
+        { t: 18, ry: -3.5, rx: 0.25, dist: 260 },
+        { t: 21, ry: -4.5, rx: 0.3,  dist: 320 }
+    ];
+    var cinematicTotalDur = 21;
+
+    function cinematicLerp(t) {
+        // Find surrounding keyframes
+        var k0 = cinematicKeys[0], k1 = cinematicKeys[1];
+        for (var i = 0; i < cinematicKeys.length - 1; i++) {
+            if (t >= cinematicKeys[i].t && t <= cinematicKeys[i+1].t) {
+                k0 = cinematicKeys[i]; k1 = cinematicKeys[i+1]; break;
+            }
+        }
+        if (t >= cinematicKeys[cinematicKeys.length - 1].t) {
+            k0 = k1 = cinematicKeys[cinematicKeys.length - 1];
+        }
+        var seg = (k1.t - k0.t) || 1;
+        var lt = easeQ(Math.max(0, Math.min(1, (t - k0.t) / seg)));
+        return {
+            ry: k0.ry + (k1.ry - k0.ry) * lt,
+            rx: k0.rx + (k1.rx - k0.rx) * lt,
+            dist: k0.dist + (k1.dist - k0.dist) * lt
+        };
+    }
+
+    var cinematicInfoTexts = [
+        { t: 0, text: 'DiaAgent Smartwatch' },
+        { t: 3, text: 'IKCU AI Lab Tasarimi' },
+        { t: 6, text: '1.69" Dokunmatik Ekran' },
+        { t: 9, text: 'Dahili Saglik Sensorleri' },
+        { t: 12, text: 'Kablosuz Veri Aktarimi' },
+        { t: 15, text: 'Giyilebilir Saglik Teknolojisi' },
+        { t: 18, text: 'DiaAgent Smartwatch' }
+    ];
+
+    function animateCinematic(elapsed) {
+        var t = elapsed - modeState.startTime;
+        setAssembled();
+        syncBands();
+
+        // Interpolate camera
+        var cam = cinematicLerp(t);
+        var baseRY = modeState.data.baseRotY || 0;
+        rotY = baseRY + cam.ry;
+        rotX = cam.rx;
+        camR = cam.dist;
+
+        // Info text
+        var infoText = 'DiaAgent Smartwatch';
+        for (var i = cinematicInfoTexts.length - 1; i >= 0; i--) {
+            if (t >= cinematicInfoTexts[i].t) { infoText = cinematicInfoTexts[i].text; break; }
+        }
+        document.getElementById('info').textContent = infoText;
+
+        // Progress
+        document.getElementById('progress-fill').style.width = (Math.min(1, t / cinematicTotalDur) * 100) + '%';
+
+        if (t >= cinematicTotalDur) {
+            modeState.phase = 'idle';
+            document.getElementById('info').textContent = 'DiaAgent Smartwatch';
+        }
+    }
+
+    // ==================== DIAGRAM MODE ====================
+    function animateDiagram(elapsed) {
+        // Diagram is a static HTML overlay, no 3D animation needed
+    }
+
+    // ==================== MOUSE ====================
+    var isDrag=false, prevM={x:0,y:0}, rotY=-0.3, rotX=0.25, camR=250;
+    renderer.domElement.addEventListener('mousedown',function(e){isDrag=true;prevM={x:e.clientX,y:e.clientY};});
+    renderer.domElement.addEventListener('mousemove',function(e){
+        if(!isDrag)return;
+        rotY+=(e.clientX-prevM.x)*0.005;
+        rotX+=(e.clientY-prevM.y)*0.005;
+        rotX=Math.max(-1.2,Math.min(1.2,rotX));
+        prevM={x:e.clientX,y:e.clientY};
+    });
+    renderer.domElement.addEventListener('mouseup',function(){isDrag=false;});
+    renderer.domElement.addEventListener('mouseleave',function(){isDrag=false;});
+    renderer.domElement.addEventListener('wheel',function(e){
+        camR*=e.deltaY>0?1.08:0.92;
+        camR=Math.max(30,Math.min(2000,camR));
+    });
+
+    // ==================== RENDER ====================
+    function animate() {
+        requestAnimationFrame(animate);
+        var elapsed = clock.getElapsedTime();
+
+        // Auto-rotate (not in modes that control their own camera)
+        var selfCamModes = ['turntable','wireframe','heartbeat','cinematic','watchface','diagram'];
+        var isSelfCam = selfCamModes.indexOf(activeMode) >= 0 || (activeMode === 'focus' && modeState.phase === 'playing');
+        if (autoRotate && !isDrag && !isSelfCam) {
+            rotY += 0.003;
+        }
+
+        // Camera
+        camera.position.x = Math.sin(rotY)*Math.cos(rotX)*camR;
+        camera.position.y = Math.sin(rotX)*camR + 10;
+        camera.position.z = Math.cos(rotY)*Math.cos(rotX)*camR;
+        camera.lookAt(0,0,0);
+
+        // Mode animation
+        if (modeState.phase === 'playing') {
+            switch(activeMode) {
+                case 'exploded': animateExploded(elapsed); break;
+                case 'electronics': animateElectronics(elapsed); break;
+                case 'turntable': animateTurntable(elapsed); break;
+                case 'xray': animateXRay(elapsed); break;
+                case 'xray-electronics': animateXRayElectronics(elapsed); break;
+                case 'layered': animateLayered(elapsed); break;
+                case 'focus': animateFocus(elapsed); break;
+                case 'watchface': animateWatchFace(elapsed); break;
+                case 'wireframe': animateWireframe(elapsed); break;
+                case 'heartbeat': animateHeartbeat(elapsed); break;
+                case 'cinematic': animateCinematic(elapsed); break;
+                case 'diagram': animateDiagram(elapsed); break;
+            }
+        }
+
+        // Idle floating
+        if (modeState.phase === 'idle') watchGroup.position.y = Math.sin(elapsed*0.7)*2;
+        else watchGroup.position.y = 0;
+
+        renderer.render(scene,camera);
+    }
+
+    window.addEventListener('resize',function(){
+        camera.aspect=innerWidth/innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(innerWidth,innerHeight);
+    });
+
+    animate();
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+# 3D models (hosted on GitHub Releases — not in source tree)
+parts/
+*.stl
+*.glb
+*.gltf
+*.obj
+*.step
+*.stp
+*.zip
+
+# Firebase infra (kept out of public repo — not secret, just not needed here)
+.firebaserc
+firebase.json
+firestore.rules
+firestore.indexes.json
+.firebase/
+
+# Secrets safety net
+.env
+.env.*
+*service-account*.json
+*firebase-admin*.json
+*credentials*.json
+*.key
+*.pem
+
+# Dev / OS
+server_*.log
+server.py
+.claude/
+.playwright-mcp/
+node_modules/
+.DS_Store
+Thumbs.db
