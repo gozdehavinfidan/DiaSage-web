@@ -1340,12 +1340,12 @@
             .app-features-row { grid-template-columns: 1fr; }
         }
         @media (max-width: 1199px) {
-            .container { padding: 0 64px; }
+            .container { padding: 0 48px; }
+            .nav-links { display: none; }
+            .nav-hamburger { display: block; }
         }
         @media (max-width: 900px) {
             .container { padding: 0 32px; }
-            .nav-links { display: none; }
-            .nav-hamburger { display: block; }
         }
         @media (max-width: 640px) {
             .container { padding: 0 20px; }
