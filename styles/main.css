@@ -119,6 +119,7 @@
         .nav-logo {
             font-family: var(--font-display); font-size: 30px; font-weight: 700;
             text-decoration: none; color: #eeeef4; letter-spacing: -0.5px;
+            white-space: nowrap;
         }
         .nav-logo span { background: linear-gradient(90deg, var(--cyan), var(--purple), var(--magenta)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
         .nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
@@ -126,6 +127,7 @@
             font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.7);
             text-decoration: none; padding: 10px 20px; border-radius: 10px;
             transition: color 0.3s, background 0.3s; letter-spacing: 0.2px;
+            white-space: nowrap;
         }
         .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
         .nav-cta {
@@ -1337,11 +1339,22 @@
             .app-stage { gap: 24px; }
             .app-features-row { grid-template-columns: 1fr; }
         }
+        @media (max-width: 1199px) {
+            .container { padding: 0 64px; }
+        }
+        @media (max-width: 900px) {
+            .container { padding: 0 32px; }
+            .nav-links { display: none; }
+            .nav-hamburger { display: block; }
+        }
         @media (max-width: 640px) {
             .container { padding: 0 20px; }
             .features-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
-            .nav-hamburger { display: block; }
+            .hero-title br, .section-title br { display: none; }
+            .hero-title { font-size: clamp(36px, 9vw, 48px); letter-spacing: -1px; }
+            .hero-subtitle { font-size: 18px; }
+            .section-title { font-size: clamp(32px, 8vw, 44px) !important; }
+            .hero-text { min-width: 0; }
             .phone-mockup { width: 160px; }
             .app-stage { gap: 16px; }
             .app-carousel-wrap::before, .app-carousel-wrap::after { width: 60px; }
@@ -1358,7 +1371,7 @@
         .mobile-nav {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(4,4,12,0.95); backdrop-filter: blur(20px);
-            z-index: 999; flex-direction: column; align-items: center;
+            z-index: 1001; flex-direction: column; align-items: center;
             justify-content: center; gap: 8px;
         }
         .mobile-nav.open { display: flex; }
