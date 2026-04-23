@@ -278,7 +278,6 @@ function buildSummary(allAnalytics) {
     { label: 'SpO2 Ort.', val: allAnalytics.spo2.avg + '%', color: 'var(--spo2)' },
     { label: 'Sıcaklık Ort.', val: allAnalytics.temp.avg + '°C', color: 'var(--temp)' },
     { label: 'Tansiyon Ort.', val: allAnalytics.bp.avg + '/' + allAnalytics.bp.diaAvg, color: 'var(--bp)' },
-    { label: 'HRV Ort.', val: allAnalytics.hrv.avg + ' ms', color: 'var(--hrv)' },
     { label: 'Kan Şekeri Ort.', val: allAnalytics.glucose.avg + ' mg/dL', color: 'var(--calories)' }
   ];
   container.innerHTML = '';
@@ -304,8 +303,8 @@ function renderDashboard(days) {
 
 function renderDashboardWithDocs(docs, days) {
   void days;
-  const keys = ['hr', 'spo2', 'temp', 'bp', 'hrv', 'glucose'];
-  const chartMap = { hr: 'chartHR', spo2: 'chartSpO2', temp: 'chartTemp', bp: 'chartBP', hrv: 'chartHRV', glucose: 'chartGlucose' };
+  const keys = ['hr', 'spo2', 'temp', 'bp', 'glucose'];
+  const chartMap = { hr: 'chartHR', spo2: 'chartSpO2', temp: 'chartTemp', bp: 'chartBP', glucose: 'chartGlucose' };
 
   if (!docs || docs.length === 0) {
     const summary = document.getElementById('monitorSummary');
