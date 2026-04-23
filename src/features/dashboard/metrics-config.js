@@ -11,10 +11,10 @@ export const metricConfigs = {
 };
 
 export const metricLabels = {
-  hr:      { name: 'Nabız',      unit: 'BPM',   normalRange: '60-100 BPM' },
+  hr:      { name: 'Kalp Atış Hızı', unit: 'BPM',   normalRange: '60-100 BPM' },
   spo2:    { name: 'SpO2',       unit: '%',     normalRange: '95-100%' },
   temp:    { name: 'Sıcaklık',   unit: '°C',    normalRange: '36.1-37.2°C' },
   bp:      { name: 'Tansiyon',   unit: 'mmHg',  normalRange: '90-140 mmHg' },
   hrv:     { name: 'HRV',        unit: 'ms',    normalRange: '50-100 ms' },
-  glucose: { name: 'Kan Şekeri', unit: 'mg/dL', normalRange: '70-140 mg/dL' },
+  glucose: { name: 'Glukoz',     unit: 'mg/dL', normalRange: '70-140 mg/dL' },
 };

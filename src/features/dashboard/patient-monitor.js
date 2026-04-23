@@ -274,11 +274,11 @@ function renderAnalyticsPanel(key, data, analytics) {
 function buildSummary(allAnalytics) {
   const container = document.getElementById('monitorSummary');
   const chips = [
-    { label: 'Nabız Ort.', val: allAnalytics.hr.avg + ' BPM', color: 'var(--heart)' },
-    { label: 'SpO2 Ort.', val: allAnalytics.spo2.avg + '%', color: 'var(--spo2)' },
+    { label: 'Glukoz Ort.', val: allAnalytics.glucose.avg + ' mg/dL', color: 'var(--calories)' },
+    { label: 'Kalp Atış Hızı Ort.', val: allAnalytics.hr.avg + ' BPM', color: 'var(--heart)' },
     { label: 'Sıcaklık Ort.', val: allAnalytics.temp.avg + '°C', color: 'var(--temp)' },
     { label: 'Tansiyon Ort.', val: allAnalytics.bp.avg + '/' + allAnalytics.bp.diaAvg, color: 'var(--bp)' },
-    { label: 'Kan Şekeri Ort.', val: allAnalytics.glucose.avg + ' mg/dL', color: 'var(--calories)' }
+    { label: 'SpO2 Ort.', val: allAnalytics.spo2.avg + '%', color: 'var(--spo2)' }
   ];
   container.innerHTML = '';
   chips.forEach(function (c) {

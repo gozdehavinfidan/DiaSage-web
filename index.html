@@ -549,11 +549,30 @@
 
     <!-- Analytics cards -->
     <div class="monitor-grid" id="monitorGrid">
+        <!-- Blood Sugar -->
+        <div class="monitor-card glucose-card" data-metric="glucose">
+            <div class="monitor-card-glow"></div>
+            <div class="monitor-card-top">
+                <div><div class="monitor-card-label">Glukoz</div><div class="monitor-card-unit">mg/dL &middot; Glukoz Seviyesi</div></div>
+                <div class="monitor-card-top-right"><span class="monitor-card-normal-badge" id="badgeGlucose">--</span></div>
+            </div>
+            <div class="monitor-card-body">
+                <div class="monitor-card-chart-area">
+                    <canvas class="monitor-chart-canvas" id="chartGlucose"></canvas>
+                    <div class="minmax-row">
+                        <span class="minmax-label">Min</span><span class="minmax-val" id="minGlucose" style="color:var(--calories);">--</span>
+                        <div class="minmax-bar-wrap"><div class="minmax-bar-fill" id="barGlucose"></div><div class="minmax-bar-marker" id="markerGlucose"></div></div>
+                        <span class="minmax-label">Max</span><span class="minmax-val" id="maxGlucose" style="color:var(--calories);">--</span>
+                    </div>
+                </div>
+                <div class="monitor-card-analytics" id="analyticsGlucose"></div>
+            </div>
+        </div>
         <!-- Heart Rate -->
         <div class="monitor-card heart-card" data-metric="hr">
             <div class="monitor-card-glow"></div>
             <div class="monitor-card-top">
-                <div><div class="monitor-card-label">Nabız</div><div class="monitor-card-unit">BPM &middot; Kalp Atış Hızı</div></div>
+                <div><div class="monitor-card-label">Kalp Atış Hızı</div><div class="monitor-card-unit">BPM &middot; Dakikadaki Atım</div></div>
                 <div class="monitor-card-top-right"><span class="monitor-card-normal-badge" id="badgeHR">--</span></div>
             </div>
             <div class="monitor-card-body">
@@ -566,25 +585,6 @@
                     </div>
                 </div>
                 <div class="monitor-card-analytics" id="analyticsHR"></div>
-            </div>
-        </div>
-        <!-- SpO2 -->
-        <div class="monitor-card spo2-card" data-metric="spo2">
-            <div class="monitor-card-glow"></div>
-            <div class="monitor-card-top">
-                <div><div class="monitor-card-label">SpO2</div><div class="monitor-card-unit">% &middot; Kan Oksijen Satürasyonu</div></div>
-                <div class="monitor-card-top-right"><span class="monitor-card-normal-badge" id="badgeSpO2">--</span></div>
-            </div>
-            <div class="monitor-card-body">
-                <div class="monitor-card-chart-area">
-                    <canvas class="monitor-chart-canvas" id="chartSpO2"></canvas>
-                    <div class="minmax-row">
-                        <span class="minmax-label">Min</span><span class="minmax-val" id="minSpO2" style="color:var(--spo2);">--</span>
-                        <div class="minmax-bar-wrap"><div class="minmax-bar-fill" id="barSpO2"></div><div class="minmax-bar-marker" id="markerSpO2"></div></div>
-                        <span class="minmax-label">Max</span><span class="minmax-val" id="maxSpO2" style="color:var(--spo2);">--</span>
-                    </div>
-                </div>
-                <div class="monitor-card-analytics" id="analyticsSpO2"></div>
             </div>
         </div>
         <!-- Temperature -->
@@ -625,23 +625,23 @@
                 <div class="monitor-card-analytics" id="analyticsBP"></div>
             </div>
         </div>
-        <!-- Blood Sugar -->
-        <div class="monitor-card glucose-card" data-metric="glucose">
+        <!-- SpO2 -->
+        <div class="monitor-card spo2-card" data-metric="spo2">
             <div class="monitor-card-glow"></div>
             <div class="monitor-card-top">
-                <div><div class="monitor-card-label">Kan Şekeri</div><div class="monitor-card-unit">mg/dL &middot; Glukoz Seviyesi</div></div>
-                <div class="monitor-card-top-right"><span class="monitor-card-normal-badge" id="badgeGlucose">--</span></div>
+                <div><div class="monitor-card-label">SpO2</div><div class="monitor-card-unit">% &middot; Kan Oksijen Satürasyonu</div></div>
+                <div class="monitor-card-top-right"><span class="monitor-card-normal-badge" id="badgeSpO2">--</span></div>
             </div>
             <div class="monitor-card-body">
                 <div class="monitor-card-chart-area">
-                    <canvas class="monitor-chart-canvas" id="chartGlucose"></canvas>
+                    <canvas class="monitor-chart-canvas" id="chartSpO2"></canvas>
                     <div class="minmax-row">
-                        <span class="minmax-label">Min</span><span class="minmax-val" id="minGlucose" style="color:var(--calories);">--</span>
-                        <div class="minmax-bar-wrap"><div class="minmax-bar-fill" id="barGlucose"></div><div class="minmax-bar-marker" id="markerGlucose"></div></div>
-                        <span class="minmax-label">Max</span><span class="minmax-val" id="maxGlucose" style="color:var(--calories);">--</span>
+                        <span class="minmax-label">Min</span><span class="minmax-val" id="minSpO2" style="color:var(--spo2);">--</span>
+                        <div class="minmax-bar-wrap"><div class="minmax-bar-fill" id="barSpO2"></div><div class="minmax-bar-marker" id="markerSpO2"></div></div>
+                        <span class="minmax-label">Max</span><span class="minmax-val" id="maxSpO2" style="color:var(--spo2);">--</span>
                     </div>
                 </div>
-                <div class="monitor-card-analytics" id="analyticsGlucose"></div>
+                <div class="monitor-card-analytics" id="analyticsSpO2"></div>
             </div>
         </div>
     </div>
